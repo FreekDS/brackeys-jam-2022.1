@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Player/flashlight.png" type="Texture" id=2]
+[ext_resource path="res://Player/crystalLightMap.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 20 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.497436 )
+colors = PoolColorArray( 1, 0.890625, 0, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 30
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 9.53674e-07 )
+scale = Vector2( 0.666667, 40 )
+texture = SubResource( 3 )
+
+[node name="LightJoint" type="Node2D" parent="."]
+
+[node name="Light2D" type="Light2D" parent="LightJoint"]
+position = Vector2( 88.752, 0.499996 )
+scale = Vector2( 1.85608, -1.35862 )
+texture = ExtResource( 2 )
+offset = Vector2( 30, -10 )
+texture_scale = 1.45
+color = Color( 0.854902, 0.94902, 0.533333, 1 )
+mode = 2
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 3 )
+texture_scale = 0.3
+color = Color( 0.976471, 0.823529, 0.494118, 1 )
+energy = 0.5
+range_height = 413.4
