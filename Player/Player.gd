@@ -1,32 +1,29 @@
 extends KinematicBody2D
 
-export var speed = 200
+export var speed = 500
+export var jump_strength = 350
+export var GRAVITY = 981
 
-var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
 
 onready var light = $LightJoint
 
-func get_input_vec():
-	var dir = Vector2.ZERO
+func get_input():
+	var dir = 0
 	if Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
-		dir.x = -1
+		dir = -1
 	elif Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
-		dir.x = 1
-	if Input.is_action_pressed("down") and not Input.is_action_pressed("up"):
-		dir.y = 1
-	elif Input.is_action_pressed("up") and not Input.is_action_pressed("down"):
-		dir.y = -1
+		dir = 1
 	return dir
 
-
-func _ready():
-	pass
-	
-
-func _physics_process(_delta):
-	direction = get_input_vec()
-	velocity = move_and_slide(direction.normalized() * speed)
+func _physics_process(delta):
+	var dir = get_input()
+	velocity.x = dir * speed
+	velocity.y += GRAVITY * delta
+	velocity = move_and_slide(velocity, Vector2.UP)
+	if Input.is_action_pressed("jump"):
+		if is_on_floor():
+			velocity.y = -jump_strength
 	light.look_at(get_global_mouse_position())
 
 
