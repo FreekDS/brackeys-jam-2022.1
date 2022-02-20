@@ -8,6 +8,8 @@ var velocity = Vector2.ZERO
 
 onready var light = $LightJoint
 
+signal interact
+
 func get_input():
 	var dir = 0
 	if Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
@@ -25,5 +27,10 @@ func _physics_process(delta):
 		if is_on_floor():
 			velocity.y = -jump_strength
 	light.look_at(get_global_mouse_position())
+	
+func _input(event):
+	if event is InputEventKey:
+		if event.is_action_pressed("interact"):
+			emit_signal("interact")
 
 
