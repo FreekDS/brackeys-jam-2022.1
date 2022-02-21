@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Entities/Door/door.png" type="Texture" id=1]
+[ext_resource path="res://Entities/Door/DoorInteractable.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Interactable/outline_shadermaterial.tres" type="Material" id=3]
+
+[sub_resource type="Animation" id=3]
+resource_name = "mouse enter"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Door:material:shader_param/thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 5.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "mouse exit"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 105.5, 175 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 14, -8 )
+script = ExtResource( 2 )
+
+[node name="Door" type="Sprite" parent="."]
+material = ExtResource( 3 )
+texture = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/mouse enter" = SubResource( 3 )
+"anims/mouse exit" = SubResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 1, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -2, -1 )
+shape = SubResource( 1 )
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_over"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

@@ -1,5 +1,6 @@
 tool
 extends Node2D
+class_name Interactable
 
 onready var animations = $AnimationPlayer
 
