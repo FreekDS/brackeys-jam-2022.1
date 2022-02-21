@@ -1,6 +1,5 @@
 extends Camera2D
 
-
 export(NodePath) var TrackingObject = null
 export(NodePath) var LeftMost = null
 export(NodePath) var RightMost = null
