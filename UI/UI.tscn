@@ -1,14 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game/distortion2.gdshader" type="Shader" id=1]
 [ext_resource path="res://UI/StatePopup.gd" type="Script" id=2]
-[ext_resource path="res://double_pixel-7.ttf" type="DynamicFontData" id=3]
-
-[sub_resource type="DynamicFont" id=1]
-size = 40
-extra_spacing_char = 2
-extra_spacing_space = 2
-font_data = ExtResource( 3 )
+[ext_resource path="res://UI/dynamic_font.tres" type="DynamicFont" id=3]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 1 )
@@ -38,7 +32,7 @@ margin_top = -17.0
 margin_bottom = 17.0
 grow_horizontal = 0
 grow_vertical = 0
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center]Therapist: it is not real, it cannot hurt you![/center]"
 text = "Therapist: it is not real, it cannot hurt you!"

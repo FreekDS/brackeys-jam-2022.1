@@ -42,7 +42,6 @@ func play_anim(back = false):
 
 func check_in_range(source_pos: Vector2):
 	var dist = source_pos.distance_to(global_position)
-	var was_detected = detected
 	detected = dist <= detection_radius
 	if not detected and can_be_clicked:
 		play_anim(true)

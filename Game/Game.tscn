@@ -131,7 +131,7 @@ script = SubResource( 4 )
 PlayerPath = NodePath("../Player")
 
 [node name="Door" parent="Game/Interactables" instance=ExtResource( 7 )]
-position = Vector2( -1171, -70 )
+position = Vector2( 113, 469 )
 scale = Vector2( 0.5, 0.5 )
 next_scene = "scene2"
 
