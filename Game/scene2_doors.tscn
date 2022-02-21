@@ -50,6 +50,7 @@ script = SubResource( 3 )
 
 [node name="TrackingCam" parent="Game" instance=ExtResource( 3 )]
 position = Vector2( 5000, 300 )
+current = true
 TrackingObject = NodePath("../Player")
 
 [node name="Ground" type="StaticBody2D" parent="Game"]
