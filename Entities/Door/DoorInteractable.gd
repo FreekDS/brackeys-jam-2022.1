@@ -2,7 +2,7 @@ extends Interactable
 
 signal door_clicked(next_scene)
 
-export (String ) var next_scene="test"
+export (String) var next_scene="test"
 
 func _ready():
 	animations = $AnimationPlayer

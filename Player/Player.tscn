@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/flashlight.png" type="Texture" id=2]
 [ext_resource path="res://Player/Player.tres" type="Texture" id=3]
+[ext_resource path="res://Player/Inventory/Inventory.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 33, 78 )
@@ -20,6 +21,7 @@ scale = Vector2( 2.2, 155.5 )
 texture = ExtResource( 3 )
 
 [node name="LightJoint" type="Node2D" parent="."]
+visible = false
 
 [node name="Light2D" type="Light2D" parent="LightJoint"]
 position = Vector2( 88.752, 0.499996 )
@@ -31,8 +33,11 @@ color = Color( 0.854902, 0.94902, 0.533333, 1 )
 mode = 2
 
 [node name="Light2D" type="Light2D" parent="."]
+visible = false
 position = Vector2( 0.500002, 1 )
 scale = Vector2( 2.16667, 154 )
 texture = ExtResource( 3 )
 energy = 0.7
 mode = 2
+
+[node name="InventoryManager" parent="." instance=ExtResource( 4 )]

@@ -25,11 +25,11 @@ func _ready():
 func _on_mouse_over():
 	if detected:
 		play_anim()
-		mouse_in = true
+	mouse_in = true
 
 
 func _on_mouse_exit():
-	if mouse_in:
+	if mouse_in and detected:
 		play_anim(true)
 	mouse_in = false
 
@@ -42,9 +42,13 @@ func play_anim(back = false):
 
 func check_in_range(source_pos: Vector2):
 	var dist = source_pos.distance_to(global_position)
+	var was_detected = detected
 	detected = dist <= detection_radius
-	if mouse_in and not detected:
-		_on_mouse_exit()
+	if not detected and can_be_clicked:
+		play_anim(true)
+	if detected and mouse_in and not can_be_clicked:
+		play_anim()
+		
 		
 func _draw():
 	if Engine.editor_hint and debug_draw:
