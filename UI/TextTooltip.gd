@@ -50,7 +50,7 @@ func play_text():
 
 func hide_text(_node, _attr):
 	can_go = true
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(10), "timeout")
 	if can_go:
 		visible = false
 		can_go = false

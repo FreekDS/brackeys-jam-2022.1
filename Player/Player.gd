@@ -25,7 +25,7 @@ func _physics_process(delta):
 	var dir = get_input()
 	velocity.x = dir * speed
 	velocity.y += GRAVITY * delta
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide_with_snap(velocity, Vector2.ZERO, Vector2.UP)
 	if Input.is_action_pressed("jump"):
 		if is_on_floor():
 			velocity.y = -jump_strength
@@ -33,6 +33,13 @@ func _physics_process(delta):
 	
 func _ready():
 	text.visible = false
+	
+
+func say_something(message):
+	text.set_content(message)
+	text.set_position(textPos.get_global_transform_with_canvas().origin)
+	text.play_text()
+
 	
 func _unhandled_input(event):
 	if event is InputEventKey:

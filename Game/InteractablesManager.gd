@@ -10,6 +10,7 @@ func _ready():
 	
 	for c in get_children():
 		Player.connect("interact", c, "interact")
+		c.connect("action_message", Player, "say_something")
 
 func _process(_delta):
 	for n in get_children():

@@ -36,6 +36,7 @@ singletons=[  ]
 [global]
 
 full=false
+jitter=false
 
 [importer_defaults]
 

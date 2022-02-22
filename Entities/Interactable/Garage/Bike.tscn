@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/Interactable/Interactable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Levels/Garage/Art/Grg_bike.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Interactable/Garage/Bike.gd" type="Script" id=3]
 
 [sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
@@ -76,7 +77,7 @@ resource_name = "mouse exit"
 extents = Vector2( 26, 13 )
 
 [node name="Bike" instance=ExtResource( 1 )]
-debug_draw = false
+script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 5 )
