@@ -18,6 +18,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "mouse enter"
@@ -58,6 +70,7 @@ anims/RESET = SubResource( 3 )
 "anims/mouse exit" = SubResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0.5, 1 )

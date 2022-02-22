@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Entities/Interactable/Interactable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Levels/Garage/Art/Grg_phone.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Interactable/Garage/Phone.gd" type="Script" id=3]
+[ext_resource path="res://UI/TextTooltip.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -38,15 +40,125 @@ shader = SubResource( 1 )
 shader_param/outline_color = Color( 0.376471, 0.898039, 0.188235, 1 )
 shader_param/thickness = 0.0
 
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Text:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "mouse enter"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.4 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "mouse exit"
+
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.5, 5.75 )
 
+[sub_resource type="Animation" id=7]
+resource_name = "ring"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Text:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( 0, 0 ) ]
+}
+
 [node name="Phone" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 2 )
 texture = ExtResource( 2 )
 
+[node name="AnimationPlayer" parent="." index="1"]
+anims/RESET = SubResource( 4 )
+"anims/mouse enter" = SubResource( 5 )
+"anims/mouse exit" = SubResource( 6 )
+
 [node name="CollisionPolygon2D" parent="Area2D" index="0"]
 position = Vector2( 0.5, -0.25 )
 shape = SubResource( 3 )
+
+[node name="TextPos" type="Position2D" parent="." index="3"]
+
+[node name="Text" parent="." index="4" instance=ExtResource( 4 )]
+margin_left = -16.0
+margin_top = -14.0
+margin_right = 242.0
+margin_bottom = 23.0
+rect_scale = Vector2( 0.3, 0.3 )
+bbcode_text = "*ring ring*"
+visible_characters = 0
+percent_visible = 0.0
+text = "*ring ring*"
+text_content = "*ring ring*"
+
+[node name="TelephoneAnimations" type="AnimationPlayer" parent="." index="5"]
+anims/ring = SubResource( 7 )

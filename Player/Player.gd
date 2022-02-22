@@ -42,10 +42,11 @@ func say_something(message):
 
 	
 func _unhandled_input(event):
-	if event is InputEventKey:
+	if event is InputEventKey or event is InputEventMouseButton:
 		if event.is_action_pressed("interact"):
 			emit_signal("interact")
-		if event.scancode == KEY_X:
+
+		elif event.has_meta("scancode") and event.scancode == KEY_X:
 			var dinges = [
 				"Wtf is dees",
 				"hahahahahahha",

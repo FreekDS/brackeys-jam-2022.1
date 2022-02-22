@@ -6,6 +6,7 @@ onready var animations = $AnimationPlayer
 
 
 signal action_message(string)
+signal action_insanity(text)
 
 var can_be_clicked = false
 var mouse_in = false
