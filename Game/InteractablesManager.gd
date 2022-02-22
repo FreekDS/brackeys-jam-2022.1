@@ -9,6 +9,8 @@ onready var InsanityLayer = get_node(InsanityLayerPath) as Control
 func _ready():
 	if not PlayerPath or not Player:
 		printerr("please specify player")
+	if not InsanityLayerPath or not InsanityLayer:
+		printerr("please specify insanity layer")
 	
 	for c in get_children():
 		Player.connect("interact", c, "interact")

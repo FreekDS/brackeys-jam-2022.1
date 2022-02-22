@@ -4,9 +4,18 @@ class_name Interactable
 
 onready var animations = $AnimationPlayer
 
+# TODO: possibility to offset text (avoid falloff of screen)
 
+# warning-ignore:unused_signal
 signal action_message(string)
+# warning-ignore:unused_signal
+signal action_telephone(state)
+# warning-ignore:unused_signal
+signal on_interact(with)
+# warning-ignore:unused_signal
 signal action_insanity(text)
+
+
 
 var can_be_clicked = false
 var mouse_in = false
@@ -63,4 +72,4 @@ func _draw():
 
 func interact():
 	if can_be_clicked:
-		print("Hehe interaction")
+		emit_signal("on_interact", self.name)

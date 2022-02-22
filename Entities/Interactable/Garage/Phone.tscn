@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/Interactable/Interactable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Levels/Garage/Art/Grg_phone.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Interactable/Garage/Phone.gd" type="Script" id=3]
 [ext_resource path="res://UI/TextTooltip.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/double_pixel-7.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -39,6 +40,14 @@ resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/outline_color = Color( 0.376471, 0.898039, 0.188235, 1 )
 shader_param/thickness = 0.0
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0.50303 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+width = 1
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -101,6 +110,105 @@ resource_name = "mouse exit"
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.5, 5.75 )
 
+[sub_resource type="CanvasItemMaterial" id=11]
+light_mode = 1
+
+[sub_resource type="DynamicFont" id=12]
+size = 20
+extra_spacing_char = 2
+extra_spacing_space = 2
+font_data = ExtResource( 5 )
+
+[sub_resource type="GDScript" id=13]
+script/source = "tool
+extends RichTextLabel
+
+onready var tween = $Tween
+
+export(String) var text_content = \"\" setget set_content
+export(int, 1, 100) var font_size = 20 setget set_font_size
+export(bool) var play = false setget set_play
+export(float) var time_per_letter = 0.1
+
+var can_go = false
+
+func _ready():
+	tween.connect(\"tween_completed\", self, \"hide_text\")
+
+func set_font_size(size):
+	font_size = size
+	var font = self.get_font(\"normal_font\")
+	font.size = font_size
+	self.add_font_override(\"normal_font\", font)
+
+
+func set_play(can_play):
+	play = can_play
+	if not tween:
+		return
+	if can_play:
+		play_text()
+	else:
+		self.percent_visible = 0
+		if tween.is_active():
+			tween.stop_all()
+	
+func set_content(t):
+	text_content = t
+	self.bbcode_text = text_content.replace(\"\\\\n\", \"\\n\")
+
+func play_text():
+	visible = true
+	can_go = false
+	if not tween.is_active():
+		tween.interpolate_property(
+			self, \"percent_visible\",
+			0, 1,
+			time_per_letter * len(self.bbcode_text), 
+			Tween.TRANS_LINEAR,
+			Tween.EASE_IN_OUT
+			)
+	tween.start()
+
+func hide_text(_node, _attr):
+	can_go = true
+	yield(get_tree().create_timer(3), \"timeout\")
+	if can_go:
+		visible = false
+		can_go = false
+	
+func set_rect_size(x, y):
+	self.set_size(Vector2(x, y))
+
+"
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Light2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
 [sub_resource type="Animation" id=7]
 resource_name = "ring"
 length = 2.0
@@ -118,16 +226,28 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0, 1.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:offset")
+tracks/1/path = NodePath("Sprite/Light2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1.3, 1 ), Vector2( 1e-05, 1e-05 ), Vector2( 1.3, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ), Vector2( 1, 0 ) ]
 }
 
 [node name="Phone" instance=ExtResource( 1 )]
@@ -136,6 +256,13 @@ script = ExtResource( 3 )
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 2 )
 texture = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="Sprite" index="0"]
+position = Vector2( 1.0173, -1.48187 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = SubResource( 9 )
+texture_scale = 2.0
+color = Color( 0.470588, 0.984314, 0, 1 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/RESET = SubResource( 4 )
@@ -149,16 +276,22 @@ shape = SubResource( 3 )
 [node name="TextPos" type="Position2D" parent="." index="3"]
 
 [node name="Text" parent="." index="4" instance=ExtResource( 4 )]
-margin_left = -16.0
+material = SubResource( 11 )
+margin_left = -15.0
 margin_top = -14.0
-margin_right = 242.0
+margin_right = 243.0
 margin_bottom = 23.0
 rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/normal_font = SubResource( 12 )
 bbcode_text = "*ring ring*"
 visible_characters = 0
 percent_visible = 0.0
 text = "*ring ring*"
-text_content = "*ring ring*"
+script = SubResource( 13 )
+text_content = ""
+play = false
+time_per_letter = 0.1
 
 [node name="TelephoneAnimations" type="AnimationPlayer" parent="." index="5"]
+anims/RESET = SubResource( 10 )
 anims/ring = SubResource( 7 )

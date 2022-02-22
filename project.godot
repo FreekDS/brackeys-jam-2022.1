@@ -13,16 +13,32 @@ _global_script_classes=[ {
 "class": "Interactable",
 "language": "GDScript",
 "path": "res://Entities/Interactable/Interactable.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://State.gd"
+}, {
+"base": "Interactable",
+"class": "Telephone",
+"language": "GDScript",
+"path": "res://Entities/Interactable/Garage/Phone.gd"
 } ]
 _global_script_class_icons={
-"Interactable": ""
+"Interactable": "",
+"State": "",
+"Telephone": ""
 }
 
 [application]
 
 config/name="GameJam"
-run/main_scene="res://SceneChanger/SceneChanger.tscn"
+run/main_scene="res://Game/Levels/Garage/Garage.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameStates="*res://Game/GameStates.gd"
 
 [display]
 
