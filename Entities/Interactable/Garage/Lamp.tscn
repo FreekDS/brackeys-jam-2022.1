@@ -47,6 +47,9 @@ extents = Vector2( 5.5, 15 )
 material = SubResource( 2 )
 texture = ExtResource( 2 )
 
+[node name="Area2D" parent="." index="2"]
+visible = false
+
 [node name="CollisionPolygon2D" parent="Area2D" index="0"]
 position = Vector2( -0.5, 0 )
 shape = SubResource( 3 )
