@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Entities/Interactable/Interactable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game/Levels/Garage/Art/Grg_bike.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform vec4 outline_color : hint_color = vec4(1.0);
+uniform float thickness : hint_range(0, 10) = 0.2;
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * thickness;
+	
+	float outline = texture(TEXTURE, UV + vec2(-size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(0, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
+	outline = min(outline, 1.0);
+	
+	vec4 color = texture(TEXTURE, UV);
+	
+	if (color.a == 0.0) {
+		COLOR = mix(color, outline_color, outline - color.a);
+	}
+	else {
+		COLOR = color;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+shader_param/outline_color = Color( 0.376471, 0.898039, 0.188235, 1 )
+shader_param/thickness = 0.0
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "mouse enter"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.4 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "mouse exit"
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 26, 13 )
+
+[node name="Bike" instance=ExtResource( 1 )]
+debug_draw = false
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 5 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+reset_on_save = false
+anims/RESET = SubResource( 7 )
+"anims/mouse enter" = SubResource( 8 )
+"anims/mouse exit" = SubResource( 9 )
+
+[node name="Area2D" parent="." index="2"]
+visible = false
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+shape = SubResource( 6 )

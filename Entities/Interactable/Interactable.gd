@@ -4,6 +4,9 @@ class_name Interactable
 
 onready var animations = $AnimationPlayer
 
+
+signal action_message(string)
+
 var can_be_clicked = false
 var mouse_in = false
 var detected = false
@@ -20,7 +23,10 @@ func set_debug(value):
 	update()
 
 func _ready():
-	pass
+	if not Engine.editor_hint:
+		$Area2D.visible = true
+	else:
+		$Area2D.visible = false
 
 func _on_mouse_over():
 	if detected:
@@ -41,7 +47,7 @@ func play_anim(back = false):
 	can_be_clicked = not back
 
 func check_in_range(source_pos: Vector2):
-	var dist = source_pos.distance_to(global_position)
+	var dist = source_pos.distance_to(self.global_position)
 	detected = dist <= detection_radius
 	if not detected and can_be_clicked:
 		play_anim(true)
@@ -51,7 +57,8 @@ func check_in_range(source_pos: Vector2):
 		
 func _draw():
 	if Engine.editor_hint and debug_draw:
-		draw_circle(position, detection_radius, Color(1,1,1,0.5))
+		var radius = detection_radius / self.scale.x
+		draw_circle(Vector2.ZERO, radius, Color(1,1,1,0.5))
 
 func interact():
 	if can_be_clicked:

@@ -32,14 +32,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 2.0 ]
+"values": [ 0.0, 0.4 ]
 }
 
 [sub_resource type="Animation" id=5]
 resource_name = "mouse exit"
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 42, 41 )
+extents = Vector2( 45.5, 45 )
 
 [node name="Object" type="Node2D"]
 script = ExtResource( 2 )
@@ -60,6 +60,7 @@ anims/RESET = SubResource( 3 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.5, 1 )
 shape = SubResource( 6 )
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_over"]
