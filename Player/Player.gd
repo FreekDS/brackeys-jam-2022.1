@@ -10,6 +10,7 @@ var velocity = Vector2.ZERO
 onready var text = $CanvasLayer/Text
 onready var textPos = $TextPosition
 onready var light = $LightJoint
+onready var Sprites = $Sprite
 
 signal interact
 
@@ -17,15 +18,17 @@ func get_input():
 	var dir = 0
 	if Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
 		dir = -1
+		Sprites.flip_h = true
 	elif Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
 		dir = 1
+		Sprites.flip_h = false
 	return dir
 
 func _physics_process(delta):
 	var dir = get_input()
 	velocity.x = dir * speed
 	velocity.y += GRAVITY * delta
-	velocity = move_and_slide_with_snap(velocity, Vector2.ZERO, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP)
 	if Input.is_action_pressed("jump"):
 		if is_on_floor():
 			velocity.y = -jump_strength
@@ -37,7 +40,7 @@ func _ready():
 
 func say_something(message):
 	text.set_content(message)
-	text.set_position(textPos.get_global_transform_with_canvas().origin)
+#	text.set_position(textPos.get_global_transform_with_canvas().origin)
 	text.play_text()
 
 	
