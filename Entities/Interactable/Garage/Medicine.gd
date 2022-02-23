@@ -1,8 +1,6 @@
 extends Interactable
 
 
-var current_message = 0
-
 var messages = [
 	"It looks like paint",
 	"But is it paint?",
@@ -12,20 +10,13 @@ var messages = [
 ]
 
 
-func round_robin_message():
-	var msg = messages[current_message]
-	current_message += 1
-	current_message = current_message % len(messages)
-	return msg
-
-
 func interact():
 	if not enabled or not can_be_clicked:
 		return
 	
 	match StateManager.current_state:
 		StateManager.GARAGE.PICKED_UP_PHONE:
-			emit_signal("action_message", round_robin_message())
+			emit_signal("action_message", round_robin_message(messages))
 
 
 func _on_gameState_change(_level, state):

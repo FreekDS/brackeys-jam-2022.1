@@ -45,7 +45,22 @@ func _physics_process(delta):
 	
 	
 	# Neck rotation (blijkt dat ik ni kan nadenken :'()
+	var mouse_position = get_global_mouse_position()
+	var angle = rad2deg(Neck.global_position.angle_to_point(mouse_position))
 	
+	if is_facing_left():
+		if global_position.x > mouse_position.x:
+			Neck.rotation_degrees = clamp(angle, -20, 20)
+		else:
+			Neck.rotation_degrees = 0
+	else:
+		if global_position.x < mouse_position.x:
+			Neck.look_at(mouse_position)
+			Neck.rotation_degrees = clamp(Neck.rotation_degrees, -20, 20)
+		else:
+			Neck.rotation_degrees = 0
+			
+
 #	var look_direction = get_global_mouse_position()
 #	if is_facing_left():
 #		var x_distance = look_direction.x - Neck.global_position.x
@@ -54,8 +69,6 @@ func _physics_process(delta):
 #	Neck.look_at(get_global_mouse_position())
 #	var rotation_max = 20
 #	Neck.rotation_degrees = clamp(Neck.rotation_degrees, -rotation_max, rotation_max)
-	
-
 
 	
 	# Animations
@@ -79,33 +92,3 @@ func _unhandled_input(event):
 	if event is InputEventKey or event is InputEventMouseButton:
 		if event.is_action_pressed("interact"):
 			emit_signal("interact")
-
-		elif event.has_meta("scancode") and event.scancode == KEY_X:
-			var dinges = [
-				"Wtf is dees",
-				"hahahahahahha",
-				"Wanneer pannekeoekenslag?",
-				"Mag ik ne cola?",
-				"NEE GENE COLA GEVEN",
-				"Vrijdag is het feest",
-				"Ist nog ver",
-				"Mijn voeten doen zeer",
-				"Ik moet naar toilet",
-				"Wie heeft da godot logo hier geplakt gvd",
-				"Gij se lelek foorwijf",
-				"Wa een mottige deur",
-				"KESSE KESSE KESSE",
-				"Jaja, tzijn toeren",
-				"BOGOS BINTED?"
-			]
-			var item = dinges[randi() % dinges.size()]
-			text.visible = true
-			text.set_position(
-				textPos.get_global_transform_with_canvas().origin
-			)
-			text.percent_visible = 0
-			text.set_content(item)
-			text.play_text()
-			return
-
-

@@ -10,13 +10,6 @@ func interact():
 		return
 	
 	match StateManager.current_state:
-		StateManager.GARAGE.PICKED_UP_PHONE:
-			if opened:
-				Sprite.frame = 0
-				opened = false
-			else:
-				Sprite.frame = 1
-				opened = true
 		StateManager.GARAGE.PHONE_DIALED:
 			if opened:
 				if StateManager.state_meta.has('items'):
@@ -25,11 +18,18 @@ func interact():
 						opened = false
 						return
 				emit_signal("action_message", "Hey, whats this?")
-				yield(get_tree().create_timer(3), "timeout")
+				yield(get_tree().create_timer(2), "timeout")
 				emit_signal("action_message", "There are batteries in here!")
 				if not StateManager.state_meta.has('items'):
 					StateManager.state_meta['items'] = []
 				StateManager.state_meta['items'].append('batteries')
+			else:
+				Sprite.frame = 1
+				opened = true
+		_:
+			if opened:
+				Sprite.frame = 0
+				opened = false
 			else:
 				Sprite.frame = 1
 				opened = true

@@ -2,9 +2,6 @@ tool
 extends Interactable
 
 
-
-
-
 func interact():
 	if not enabled or not can_be_clicked:
 		return
@@ -15,14 +12,16 @@ func interact():
 				if StateManager.state_meta['items'].has('phone_number'):
 					return
 			emit_signal("action_message", "There is a note on the billboard\nWritten in my own handwriting:")
-			yield(get_tree().create_timer(4), "timeout")
+			yield(get_tree().create_timer(3), "timeout")
 			emit_signal("action_message", "*If you can read this, dial 0069021210420*")
 			if not StateManager.state_meta.has('items'):
 				StateManager.state_meta['items'] = []
 			StateManager.state_meta['items'].append('phone_number')
 			enabled = false
+		_:
+			emit_signal("action_message", "A bulletin board!")
 
 
 func _on_gameState_change(_level, state):
-	if state in [StateManager.GARAGE.DIARY_OPENED]:
+	if state in [StateManager.GARAGE.DIARY_OPENED, StateManager.GARAGE.PICKED_UP_PHONE]:
 		enabled = true

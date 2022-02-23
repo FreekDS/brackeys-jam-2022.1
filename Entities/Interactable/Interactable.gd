@@ -25,6 +25,15 @@ var detected = false
 export var debug_draw = true setget set_debug
 export var detection_radius = 200 setget set_radius
 
+var current_message = 0
+func round_robin_message(messages):
+	current_message = current_message % len(messages)
+	var msg = messages[current_message]
+	current_message += 1
+	return msg
+
+
+
 func set_radius(value):
 	detection_radius = value
 	update()

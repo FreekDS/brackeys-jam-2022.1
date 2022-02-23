@@ -2,7 +2,6 @@ extends Interactable
 
 export(int) var text_offset = 0
 
-var current_message = 0
 
 var messages = [
 	"Oh here is the drill I lost",
@@ -10,12 +9,6 @@ var messages = [
 	"I once made a house for my cat with this!"
 ]
 
-
-func round_robin_message():
-	var msg = messages[current_message]
-	current_message += 1
-	current_message = current_message % len(messages)
-	return msg
 
 
 func interact():
@@ -36,7 +29,7 @@ func interact():
 			else:
 				emit_signal("action_message", "There should be batteries somewhere...")
 		else:
-			emit_signal("action_message", round_robin_message(), text_offset)
+			emit_signal("action_message", round_robin_message(messages), text_offset)
 
 
 func _on_gameState_change(_level, state):
