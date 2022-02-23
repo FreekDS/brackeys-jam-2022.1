@@ -29,6 +29,7 @@ func _input(_event):
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 5 )
 shader_param/iMouse = Vector2( 10, 50 )
+shader_param/strength = 12
 
 [node name="Main" type="Node"]
 script = ExtResource( 6 )

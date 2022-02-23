@@ -31,7 +31,8 @@ func interact():
 				visible = false
 				yield(get_tree().create_timer(2.0), "timeout")
 				StateManager.change_state(StateManager.GARAGE.DRILL_ACQUIRED)
-				queue_free()
+				enabled = false
+				call_deferred("queue_free")
 			else:
 				emit_signal("action_message", "There should be batteries somewhere...")
 		else:
