@@ -17,11 +17,12 @@ func interact():
 			if not StateManager.state_meta.has('items'):
 				StateManager.state_meta['items'] = []
 			StateManager.state_meta['items'].append('phone_number')
-			enabled = false
+			disable()
 		_:
 			emit_signal("action_message", "A bulletin board!")
+	complete()
 
 
 func _on_gameState_change(_level, state):
 	if state in [StateManager.GARAGE.DIARY_OPENED, StateManager.GARAGE.PICKED_UP_PHONE]:
-		enabled = true
+		enable()

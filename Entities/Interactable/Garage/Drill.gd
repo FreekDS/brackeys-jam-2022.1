@@ -30,8 +30,10 @@ func interact():
 				emit_signal("action_message", "There should be batteries somewhere...")
 		else:
 			emit_signal("action_message", round_robin_message(messages), text_offset)
+	
+	complete()
 
 
 func _on_gameState_change(_level, state):
 	if state in [StateManager.GARAGE.PICKED_UP_PHONE]:
-		enabled = true
+		enable()

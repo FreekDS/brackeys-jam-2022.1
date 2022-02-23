@@ -57,8 +57,9 @@ func interact():
 				StateManager.INSANITY.HURT:
 					# not required, level end
 					pass
+	complete()
 
 
 func _on_gameState_change(_level, state):
 	if state in [StateManager.GARAGE.PICKED_UP_PHONE]:
-		enabled = true
+		enable()

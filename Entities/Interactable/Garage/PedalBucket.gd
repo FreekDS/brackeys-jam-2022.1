@@ -33,8 +33,9 @@ func interact():
 			else:
 				Sprite.frame = 1
 				opened = true
+	complete()
 
 
 func _on_gameState_change(_level, state):
 	if state in [StateManager.GARAGE.PICKED_UP_PHONE]:
-		enabled = true
+		enable()

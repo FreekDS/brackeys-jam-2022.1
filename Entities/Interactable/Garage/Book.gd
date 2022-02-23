@@ -20,8 +20,10 @@ func interact():
 			else:
 				emit_signal("action_message", "It is my diary\n*opens*")
 				opened = true
+	
+	complete()
 
 
 func _on_gameState_change(_level, state):
 	if state in [StateManager.GARAGE.PICKED_UP_PHONE]:
-		enabled = true
+		enable()
