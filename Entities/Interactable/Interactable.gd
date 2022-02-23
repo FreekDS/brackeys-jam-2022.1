@@ -4,7 +4,6 @@ class_name Interactable
 
 onready var animations = $AnimationPlayer
 
-# TODO: possibility to offset text (avoid falloff of screen)
 
 # warning-ignore:unused_signal
 signal action_message(string, offset)
@@ -13,9 +12,11 @@ signal action_telephone(state)
 # warning-ignore:unused_signal
 signal on_interact(with)
 # warning-ignore:unused_signal
+signal action_end_level()
+# warning-ignore:unused_signal
 signal action_insanity(text)
 
-
+var enabled = false
 
 var can_be_clicked = false
 var mouse_in = false
@@ -38,13 +39,18 @@ func _ready():
 	else:
 		$Area2D.visible = false
 
+
 func _on_mouse_over():
+	
+	if not enabled:
+		return
+	
 	if detected:
 		play_anim()
 	mouse_in = true
 
 
-func _on_mouse_exit():
+func _on_mouse_exit():	
 	if mouse_in and detected:
 		play_anim(true)
 	mouse_in = false
@@ -57,6 +63,10 @@ func play_anim(back = false):
 	can_be_clicked = not back
 
 func check_in_range(source_pos: Vector2):
+	
+	if not enabled:
+		return
+	
 	var dist = source_pos.distance_to(self.global_position)
 	detected = dist <= detection_radius
 	if not detected and can_be_clicked:
@@ -71,5 +81,14 @@ func _draw():
 		draw_circle(Vector2.ZERO, radius, Color(1,1,1,0.5))
 
 func interact():
+	
+	if not enabled:
+		return
+	
 	if can_be_clicked:
 		emit_signal("on_interact", self.name)
+		
+
+func _on_gameState_change(_level, _state):
+	pass
+

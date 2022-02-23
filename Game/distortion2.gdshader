@@ -4,6 +4,8 @@ uniform vec2 iMouse = vec2(10.0, 50.0);
 
 // SRC https://www.shadertoy.com/view/4dXBW2
 
+uniform int strength : hint_range(12, 20) = 12;
+
 float sat( float t ) {
 	return clamp( t, 0.0, 1.0 );
 }
@@ -54,6 +56,8 @@ vec2 mytrunc_vec( vec2 x, float num_levels )
 
 void fragment() {
 	
+	vec3 original_color = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
+	
 	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
 	vec2 uv = SCREEN_UV;
     uv.y = uv.y;
@@ -82,12 +86,12 @@ void fragment() {
 
 	uv.y += 0.1 * r3 * GLITCH;
 
-    const int NUM_SAMPLES = 3;
+	const int NUM_SAMPLES = 20;
     const float RCP_NUM_SAMPLES_F = 1.0 / float(NUM_SAMPLES);
     
 	vec4 sum = vec4(0.0);
 	vec3 wsum = vec3(0.0);
-	for( int i=0; i<NUM_SAMPLES; ++i )
+	for( int i=0; i<strength; ++i )
 	{
 		float t = float(i) * RCP_NUM_SAMPLES_F;
 		uv.x = sat( uv.x + ofs * t );
@@ -102,4 +106,6 @@ void fragment() {
 
 	COLOR.a = sum.a;
 	COLOR.rgb = sum.rgb; // * outcol0.a;
+	
+	
 }

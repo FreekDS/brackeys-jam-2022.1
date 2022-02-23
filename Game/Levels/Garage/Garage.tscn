@@ -75,9 +75,10 @@ scale = Vector2( 6.5, 6.5 )
 position = Vector2( 996, 98 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
+detection_radius = 350
 
 [node name="Book" parent="Game/InteractablesBack" instance=ExtResource( 7 )]
-position = Vector2( 808, 319 )
+position = Vector2( -331, 311 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
@@ -97,12 +98,13 @@ scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Crowbar" parent="Game/InteractablesBack" instance=ExtResource( 5 )]
+visible = false
 position = Vector2( -364, 399 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Drill" parent="Game/InteractablesBack" instance=ExtResource( 15 )]
-position = Vector2( -354, 297 )
+position = Vector2( 792, 307 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
@@ -116,11 +118,11 @@ debug_draw = false
 position = Vector2( -216, 57 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
+detection_radius = 300
 
 [node name="PedalBucket" parent="Game/InteractablesBack" instance=ExtResource( 10 )]
-position = Vector2( 810, 438 )
+position = Vector2( 808, 428 )
 scale = Vector2( 6.5, 6.5 )
-debug_draw = false
 
 [node name="PingpongTable" parent="Game/InteractablesBack" instance=ExtResource( 8 )]
 position = Vector2( 467, 326 )
@@ -130,7 +132,7 @@ debug_draw = false
 [node name="Plongkas" parent="Game/InteractablesBack" instance=ExtResource( 16 )]
 position = Vector2( 1424, 248 )
 scale = Vector2( 6.5, 6.5 )
-debug_draw = false
+detection_radius = 350
 
 [node name="Table" parent="Game/InteractablesBack" instance=ExtResource( 13 )]
 position = Vector2( 923, 406 )

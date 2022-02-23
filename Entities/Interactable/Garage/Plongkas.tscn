@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/Interactable/Interactable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Levels/Garage/Art/Grg_plongkas.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Interactable/Garage/Plongkas.gd" type="Script" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -38,15 +39,70 @@ shader = SubResource( 1 )
 shader_param/outline_color = Color( 0.376471, 0.898039, 0.188235, 1 )
 shader_param/thickness = 0.0
 
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "mouse enter"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/thickness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "mouse exit"
+
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 4.5, 10 )
+extents = Vector2( 9, 12.5 )
 
 [node name="Plongkas" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 2 )
 texture = ExtResource( 2 )
 
+[node name="AnimationPlayer" parent="." index="1"]
+anims/RESET = SubResource( 4 )
+"anims/mouse enter" = SubResource( 5 )
+"anims/mouse exit" = SubResource( 6 )
+
+[node name="Area2D" parent="." index="2"]
+visible = true
+
 [node name="CollisionPolygon2D" parent="Area2D" index="0"]
-position = Vector2( 0.5, 0 )
+position = Vector2( 0, 0.5 )
 shape = SubResource( 3 )

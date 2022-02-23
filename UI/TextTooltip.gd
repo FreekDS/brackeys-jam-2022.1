@@ -1,5 +1,6 @@
 tool
 extends RichTextLabel
+class_name TextToolTip
 
 onready var tween = $Tween
 
@@ -7,6 +8,8 @@ export(String) var text_content = "" setget set_content
 export(int, 1, 100) var font_size = 20 setget set_font_size
 export(bool) var play = false setget set_play
 export(float) var time_per_letter = 0.1
+
+signal completed()
 
 var can_go = false
 
@@ -46,7 +49,7 @@ func play_text():
 			Tween.TRANS_LINEAR,
 			Tween.EASE_IN_OUT
 			)
-	tween.start()
+		tween.start()
 
 func hide_text(_node, _attr):
 	can_go = true
@@ -54,6 +57,7 @@ func hide_text(_node, _attr):
 	if can_go:
 		visible = false
 		can_go = false
+		emit_signal("completed")
 	
 func set_rect_size(x, y):
 	self.set_size(Vector2(x, y))

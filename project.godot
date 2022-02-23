@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Telephone",
 "language": "GDScript",
 "path": "res://Entities/Interactable/Garage/Phone.gd"
+}, {
+"base": "RichTextLabel",
+"class": "TextToolTip",
+"language": "GDScript",
+"path": "res://UI/TextTooltip.gd"
 } ]
 _global_script_class_icons={
 "Interactable": "",
-"Telephone": ""
+"Telephone": "",
+"TextToolTip": ""
 }
 
 [application]
@@ -32,7 +38,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameStates="*res://Game/GameStates.gd"
+StateManager="*res://GameStates/StateManager.gd"
 
 [display]
 
