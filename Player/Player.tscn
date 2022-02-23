@@ -1,17 +1,17 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Player/flashlight.png" type="Texture" id=2]
-[ext_resource path="res://Player/Player.tres" type="Texture" id=3]
 [ext_resource path="res://Player/Inventory/Inventory.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/TextTooltip.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Player/Player_stand.png" type="Texture" id=6]
+[ext_resource path="res://Player/player_heads.png" type="Texture" id=6]
 [ext_resource path="res://UI/double_pixel-7.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Player/Player_body.png" type="Texture" id=8]
 
 [sub_resource type="CanvasItemMaterial" id=3]
 light_mode = 1
 
 [sub_resource type="DynamicFont" id=4]
+size = 12
 extra_spacing_char = 2
 extra_spacing_space = 2
 font_data = ExtResource( 7 )
@@ -84,8 +84,196 @@ extents = Vector2( 33, 78 )
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
+[sub_resource type="Animation" id=9]
+resource_name = "Fear"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("NeckJoint/HeadSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NeckJoint/HeadSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -25 ), Vector2( 2, -25 ), Vector2( 0, -25 ), Vector2( -2, -25 ), Vector2( 0, -25 ), Vector2( 2, -25 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodySprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( -0.2, 0 ), Vector2( 0, 0 ), Vector2( 0.2, 0 ), Vector2( 0, 0 ), Vector2( -0.2, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NeckJoint/HeadSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -25 ), Vector2( 0, -22 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("NeckJoint/HeadSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("NeckJoint/HeadSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodySprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("NeckJoint/HeadSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -25 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodySprite:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Walk"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NeckJoint/HeadSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Fear"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Walk"
+
+[sub_resource type="AnimationNodeBlend2" id=13]
+
+[sub_resource type="AnimationNodeBlend2" id=14]
+
+[sub_resource type="AnimationNodeBlendTree" id=15]
+graph_offset = Vector2( 0, 91.75 )
+nodes/Fear/node = SubResource( 10 )
+nodes/Fear/position = Vector2( 500, 320 )
+nodes/Idle/node = SubResource( 11 )
+nodes/Idle/position = Vector2( 100, 100 )
+nodes/Walk/node = SubResource( 12 )
+nodes/Walk/position = Vector2( 100, 240 )
+nodes/fear/node = SubResource( 13 )
+nodes/fear/position = Vector2( 700, 120 )
+nodes/moving/node = SubResource( 14 )
+nodes/moving/position = Vector2( 360, 120 )
+nodes/output/position = Vector2( 940, 120 )
+node_connections = [ "output", 0, "fear", "moving", 0, "Idle", "moving", 1, "Walk", "fear", 0, "moving", "fear", 1, "Fear" ]
+
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 274, 205 )
 script = ExtResource( 1 )
 
 [node name="CanvasLayer" type="Node2D" parent="."]
@@ -95,48 +283,53 @@ z_index = 2
 material = SubResource( 3 )
 margin_left = -148.0
 margin_top = -102.0
-margin_right = 286.0
+margin_right = 174.0
 margin_bottom = -42.0
 rect_clip_content = false
 custom_fonts/normal_font = SubResource( 4 )
+bbcode_text = ""
+text = ""
 script = SubResource( 5 )
 text_content = ""
-font_size = 16
-play = false
+font_size = 12
 time_per_letter = 0.03
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="BodySprite" type="Sprite" parent="."]
 light_mask = 32
 material = SubResource( 2 )
-position = Vector2( 3.05176e-05, 1 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 8 )
+hframes = 4
+
+[node name="NeckJoint" type="Node2D" parent="."]
+position = Vector2( 0, -20 )
+
+[node name="HeadSprite" type="Sprite" parent="NeckJoint"]
+light_mask = 32
+position = Vector2( 0, -25 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 6 )
-
-[node name="LightJoint" type="Node2D" parent="."]
-visible = false
-
-[node name="Light2D" type="Light2D" parent="LightJoint"]
-position = Vector2( 88.752, 0.499996 )
-scale = Vector2( 1.85608, -1.35862 )
-texture = ExtResource( 2 )
-offset = Vector2( 30, -10 )
-texture_scale = 1.45
-color = Color( 0.854902, 0.94902, 0.533333, 1 )
-mode = 2
-
-[node name="Light2D" type="Light2D" parent="."]
-visible = false
-position = Vector2( 0.500002, 1 )
-scale = Vector2( 2.16667, 154 )
-texture = ExtResource( 3 )
-energy = 0.7
-mode = 2
+hframes = 2
 
 [node name="InventoryManager" parent="." instance=ExtResource( 4 )]
 
 [node name="TextPosition" type="Position2D" parent="."]
 position = Vector2( -40, -90 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/Fear = SubResource( 9 )
+anims/Idle = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+anims/Walk = SubResource( 8 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 15 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/fear/blend_amount = 0.0
+parameters/moving/blend_amount = 0.0

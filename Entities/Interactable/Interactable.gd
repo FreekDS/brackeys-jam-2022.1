@@ -7,7 +7,7 @@ onready var animations = $AnimationPlayer
 # TODO: possibility to offset text (avoid falloff of screen)
 
 # warning-ignore:unused_signal
-signal action_message(string)
+signal action_message(string, offset)
 # warning-ignore:unused_signal
 signal action_telephone(state)
 # warning-ignore:unused_signal

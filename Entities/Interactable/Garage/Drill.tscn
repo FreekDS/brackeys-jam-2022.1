@@ -44,13 +44,11 @@ extents = Vector2( 7, 5 )
 
 [node name="Drill" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+text_offset = 20
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 2 )
 texture = ExtResource( 2 )
-
-[node name="Area2D" parent="." index="2"]
-visible = false
 
 [node name="CollisionPolygon2D" parent="Area2D" index="0"]
 position = Vector2( 0, 0 )

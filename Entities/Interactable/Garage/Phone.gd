@@ -21,6 +21,7 @@ func interact():
 func activate(dont_emit=false):
 	going_over = true
 	PhoneAnimations.play("ring")
+	Text.set_content("*ring ring*")
 	going_over = true
 	if not dont_emit:
 		emit_signal("action_telephone", going_over)

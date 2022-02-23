@@ -9,8 +9,11 @@ var velocity = Vector2.ZERO
 
 onready var text = $CanvasLayer/Text
 onready var textPos = $TextPosition
-onready var light = $LightJoint
-onready var Sprites = $Sprite
+onready var BodySprites = $BodySprite
+onready var HeadSprites = $NeckJoint/HeadSprite
+onready var PlayerAnimations = $AnimationTree
+onready var Neck = $NeckJoint
+
 
 signal interact
 
@@ -18,11 +21,18 @@ func get_input():
 	var dir = 0
 	if Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
 		dir = -1
-		Sprites.flip_h = true
+		BodySprites.flip_h = true
+		HeadSprites.flip_h = true
 	elif Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
 		dir = 1
-		Sprites.flip_h = false
+		BodySprites.flip_h = false
+		HeadSprites.flip_h = false
 	return dir
+	
+
+func is_facing_left():
+	return BodySprites.flip_h
+
 
 func _physics_process(delta):
 	var dir = get_input()
@@ -32,15 +42,36 @@ func _physics_process(delta):
 	if Input.is_action_pressed("jump"):
 		if is_on_floor():
 			velocity.y = -jump_strength
-	light.look_at(get_global_mouse_position())
+	
+	
+	# Neck rotation (blijkt dat ik ni kan nadenken :'()
+	
+#	var look_direction = get_global_mouse_position()
+#	if is_facing_left():
+#		var x_distance = look_direction.x - Neck.global_position.x
+#		look_direction.x -= x_distance
+#
+#	Neck.look_at(get_global_mouse_position())
+#	var rotation_max = 20
+#	Neck.rotation_degrees = clamp(Neck.rotation_degrees, -rotation_max, rotation_max)
+	
+
+
+	
+	# Animations
+	if velocity != Vector2.ZERO:
+		PlayerAnimations["parameters/moving/blend_amount"] = 1.0
+	else:
+		PlayerAnimations["parameters/moving/blend_amount"] = 0
 	
 func _ready():
 	text.visible = false
-	
+	PlayerAnimations.active = true
 
-func say_something(message):
+
+func say_something(message, offset=0):
 	text.set_content(message)
-#	text.set_position(textPos.get_global_transform_with_canvas().origin)
+	text.set_global_position(textPos.global_position + Vector2(offset, 0))
 	text.play_text()
 
 	
