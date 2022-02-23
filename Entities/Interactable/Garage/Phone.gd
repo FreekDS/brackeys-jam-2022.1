@@ -52,6 +52,9 @@ func interact():
 					return
 			
 			emit_signal("action_message", "So many possible phone numbers to dial...")
+		
+		_:
+			pass
 			
 			
 	
