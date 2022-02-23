@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Game/scene2_doors.gd" type="Script" id=2]
+[ext_resource path="res://Game/Levels/Kitchen/Kitchen.gd" type="Script" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Interactable/Interactable.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Door/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/keuken_sink.jpg" type="Texture" id=6]
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends Node2D
@@ -42,7 +43,7 @@ gradient = SubResource( 5 )
 width = 1000
 
 [node name="Main" type="Node"]
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 
 [node name="Game" type="Node2D" parent="."]
 position = Vector2( 1, 0 )
@@ -58,7 +59,7 @@ TrackingObject = NodePath("../Player")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game/Ground"]
 polygon = PoolVector2Array( 2, 550, 1024, 553, 1024, 1, 1043, 0, 1043, 597, -20, 599, -20, 0, 7, 1 )
 
-[node name="Player" parent="Game" instance=ExtResource( 1 )]
+[node name="Player" parent="Game" instance=ExtResource( 2 )]
 position = Vector2( 308, 468 )
 
 [node name="Colliders" type="Node2D" parent="Game"]
@@ -76,7 +77,7 @@ debug_draw = false
 position = Vector2( 233, 463 )
 scale = Vector2( 0.5, 0.5 )
 debug_draw = false
-next_scene = "Main"
+next_scene = "scene2"
 
 [node name="Background" type="TextureRect" parent="Game"]
 anchor_right = 1.0
@@ -91,3 +92,21 @@ stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Game"]
+margin_left = 358.0
+margin_top = 149.0
+margin_right = 428.0
+margin_bottom = 165.0
+rect_rotation = 0.0216853
+rect_scale = Vector2( 5, 5 )
+size_flags_stretch_ratio = 1.3
+text = "De keuken"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeukenSink" type="Sprite" parent="."]
+position = Vector2( 854, 384 )
+scale = Vector2( 0.280093, 0.306344 )
+texture = ExtResource( 6 )

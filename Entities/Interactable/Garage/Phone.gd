@@ -27,7 +27,9 @@ func interact():
 			emit_signal("action_insanity", "It is not real, it cannot hurt you!")
 			yield(get_tree().create_timer(4.0), "timeout")
 			emit_signal("action_message", "It is not real, it cannot hurt me...")
+			#Verander dit terug naar de picked up phone state
 			StateManager.change_state(StateManager.GARAGE.PICKED_UP_PHONE)
+			#StateManager.change_state(StateManager.GARAGE.END)
 		StateManager.GARAGE.DIARY_OPENED:
 			if StateManager.state_meta.has('items'):
 				if StateManager.state_meta['items'].has('phone_number'):

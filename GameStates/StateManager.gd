@@ -2,6 +2,7 @@ extends Node
 
 
 signal transitioned_to(level, state)
+signal level_changed(level)
 
 func _ready():
 	current_level = LEVELS.GARAGE
@@ -13,7 +14,8 @@ func notify():
 
 
 enum LEVELS {
-	GARAGE
+	GARAGE ,
+	KITCHEN
 }
 
 
@@ -46,9 +48,13 @@ func change_state(new_state):
 	current_state = new_state
 	state_meta.clear()
 	notify()
+	if(new_state==GARAGE.END):
+		change_level("kitchen")
+		
 
 
 func change_level(new_level):
 	current_level = new_level
-	state_meta.clear()
+	#This signal will be picked up in de SceneChanger
+	emit_signal("level_changed", new_level)
 	notify()

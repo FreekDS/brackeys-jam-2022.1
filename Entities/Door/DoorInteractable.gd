@@ -6,6 +6,7 @@ export (String) var next_scene="test"
 
 func _ready():
 	animations = $AnimationPlayer
+	enabled = true
 
 func set_scene(value):
 	next_scene = value

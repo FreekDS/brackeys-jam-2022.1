@@ -23,6 +23,7 @@ func interact():
 				emit_signal("action_insanity", "IT HURTS")
 				yield(get_tree().create_timer(3), "timeout")
 				StateManager.change_state(StateManager.GARAGE.END)
+				
 
 
 func _on_gameState_change(_level, state):

@@ -1,0 +1,113 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Game/Levels/Kitchen/Kitchen_scene2.gd" type="Script" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Camera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Interactable/Interactable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Door/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/keuken_sink.jpg" type="Texture" id=6]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+
+func _input(_event):
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().quit()
+"
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node2D
+
+
+export(NodePath) var PlayerPath = null
+onready var Player = get_node(PlayerPath) as KinematicBody2D
+
+func _ready():
+	if not PlayerPath or not Player:
+		printerr(\"please specify player\")
+	
+	for c in get_children():
+		Player.connect(\"interact\", c, \"interact\")
+
+func _process(_delta):
+	for n in get_children():
+		n.check_in_range(Player.global_position)
+"
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.63388 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 5 )
+width = 1000
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Game" type="Node2D" parent="."]
+position = Vector2( 1, 0 )
+script = SubResource( 3 )
+
+[node name="TrackingCam" parent="Game" instance=ExtResource( 3 )]
+position = Vector2( 5000, 300 )
+current = true
+TrackingObject = NodePath("../Player")
+
+[node name="Ground" type="StaticBody2D" parent="Game"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game/Ground"]
+polygon = PoolVector2Array( 2, 550, 1024, 553, 1024, 1, 1043, 0, 1043, 597, -20, 599, -20, 0, 7, 1 )
+
+[node name="Player" parent="Game" instance=ExtResource( 2 )]
+position = Vector2( 652, 476 )
+
+[node name="Colliders" type="Node2D" parent="Game"]
+position = Vector2( 1, 551 )
+
+[node name="Interactables" type="Node2D" parent="Game"]
+script = SubResource( 4 )
+PlayerPath = NodePath("../Player")
+
+[node name="Object" parent="Game/Interactables" instance=ExtResource( 4 )]
+position = Vector2( 488, 357 )
+debug_draw = false
+
+[node name="door" parent="Game/Interactables" instance=ExtResource( 5 )]
+position = Vector2( 565, 465 )
+scale = Vector2( 0.5, 0.5 )
+debug_draw = false
+next_scene = "garage"
+
+[node name="Background" type="TextureRect" parent="Game"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -1.0
+rect_scale = Vector2( 1.0177, 0.995679 )
+mouse_filter = 2
+texture = SubResource( 2 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Game"]
+margin_left = 208.0
+margin_top = 95.0
+margin_right = 344.0
+margin_bottom = 111.0
+rect_rotation = 0.0216853
+rect_scale = Vector2( 5, 5 )
+size_flags_stretch_ratio = 1.3
+text = "De betere keuken"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeukenSink" type="Sprite" parent="."]
+position = Vector2( 854, 384 )
+rotation = -3.13599
+scale = Vector2( 0.280093, 0.306344 )
+texture = ExtResource( 6 )
