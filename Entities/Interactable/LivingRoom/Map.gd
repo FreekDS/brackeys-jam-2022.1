@@ -1,5 +1,11 @@
 extends Interactable
 
+var messages = {
+	0: [""],
+	1: [""],
+	2: [""]
+}
+
 onready var RollAnimation = $RollTween
 onready var map_node = $Sprite
 
@@ -17,6 +23,7 @@ func interact():
 		StateManager.LIVING.BOX_INTERACTED:
 			RollAnimation.start()
 		_: # default
+			emit_signal("action_message", round_robin_message(messages[StateManager.insanity_level]))
 			pass
 	complete()
 

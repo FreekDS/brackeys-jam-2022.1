@@ -1,5 +1,11 @@
 extends Interactable
 
+var messages = {
+	0: [""],
+	1: [""],
+	2: [""]
+}
+
 onready var Sprite1 = $Sprite
 onready var OpenSprite = $Box2
 
@@ -20,6 +26,7 @@ func interact():
 			yield(get_tree().create_timer(3), "timeout")
 			StateManager.change_state(StateManager.LIVING.BOX_INTERACTED)
 		_: # default
+			emit_signal("action_message", round_robin_message(messages[StateManager.insanity_level]))
 			pass
 	complete()
 

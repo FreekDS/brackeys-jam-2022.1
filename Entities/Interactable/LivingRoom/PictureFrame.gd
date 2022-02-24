@@ -1,10 +1,11 @@
 extends Interactable
 
-var messages = [
-	"It is a picture",
-	"It is taken at the colosseum",
-	"I can't remember in which country"
-]
+
+var messages = {
+	0: ["It is a picture", "It is taken at the collosseum", "I can't remember in which country"],
+	1: [""],
+	2: [""]
+}
 
 
 func interact():
@@ -13,8 +14,9 @@ func interact():
 		
 	match StateManager.current_state:
 		StateManager.LIVING.BOX_INTERACTED:
-			emit_signal("action_message", round_robin_message(messages))
+			emit_signal("action_message", round_robin_message(messages[0]))
 		_: # default
+			emit_signal("action_message", round_robin_message(messages[StateManager.insanity_level]))
 			pass
 	complete()
 

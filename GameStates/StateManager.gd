@@ -21,10 +21,10 @@ enum LEVELS {
 var state_meta = {}
 
 enum INSANITY {
-	CANNOT_HURT,
-	MIGHT_HURT,
-	WILL_HURT,
-	HURT
+	CANNOT_HURT = 0,
+	MIGHT_HURT = 1,
+	WILL_HURT = 2,
+	HURT = 3
 }
 
 enum GARAGE {

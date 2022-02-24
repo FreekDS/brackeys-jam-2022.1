@@ -35,8 +35,17 @@ func round_robin_message(messages):
 	var msg = messages[current_message]
 	current_message += 1
 	return msg
+	
 
-
+func send_round_robin(messages, offset=0):
+	if StateManager.insanity_level > 2:
+		return
+	var msg = round_robin_message(messages[StateManager.insanity_level])
+	if msg and msg != "":
+		specific_message(msg, offset)
+	
+func specific_message(msg, offset=0):
+	emit_signal("action_message", msg, offset)
 
 func set_radius(value):
 	detection_radius = value
@@ -54,11 +63,8 @@ func _ready():
 
 
 func _on_mouse_over():
-	
-	if not enabled:
-		return
-	
-	if detected:
+
+	if detected and enabled:
 		play_anim()
 	mouse_in = true
 

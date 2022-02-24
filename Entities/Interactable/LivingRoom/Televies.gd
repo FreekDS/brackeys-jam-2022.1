@@ -41,7 +41,7 @@ func turn_off():
 	active = false
 	
 func turn_on():
-	if StateManager.current_state == StateManager.LIVING.PLANT_WATERED:
+	if StateManager.current_state >= StateManager.LIVING.PLANT_WATERED:
 		ScreenNoise.visible = false
 		AhDeRikSe.visible = true
 	TVAnimations.play("turn_on")

@@ -153,3 +153,6 @@ color = Color( 0.454902, 0.454902, 0.454902, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
+
+[connection signal="finished" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_finished"]
+[connection signal="playing" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_playing"]

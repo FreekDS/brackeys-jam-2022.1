@@ -28,12 +28,12 @@ func interact():
 			yield(Text, "completed")
 			emit_signal("action_insanity", "It is not real, it cannot hurt you!")
 			yield(get_tree().create_timer(4.0), "timeout")
-			emit_signal("action_message", "It is not real, it cannot hurt me...")
+			specific_message("It is not real, it cannot hurt me...")
 			StateManager.change_state(StateManager.GARAGE.PICKED_UP_PHONE)
 		StateManager.GARAGE.DIARY_OPENED:
 			if StateManager.state_meta.has('items'):
 				if StateManager.state_meta['items'].has('phone_number'):
-					emit_signal("action_message", "Let me enter the phone number...")
+					specific_message("Let me enter the phone number...")
 					yield(get_tree().create_timer(3), "timeout")
 					activate(true)
 					_text_sequence([
@@ -52,7 +52,7 @@ func interact():
 					complete()
 					return
 			
-			emit_signal("action_message", "So many possible phone numbers to dial...")
+			specific_message("So many possible phone numbers to dial...")
 		
 		_:
 			complete()
@@ -83,6 +83,7 @@ func deactivate(dont_emit=false):
 
 
 func _on_gameState_change(level, state):
+	current_message = 0
 	enabled = true
 	match level:
 		StateManager.LEVELS.GARAGE:

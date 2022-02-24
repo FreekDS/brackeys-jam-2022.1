@@ -1,5 +1,10 @@
 extends Interactable
 
+var messages = {
+	0: [""],
+	1: [""],
+	2: [""]
+}
 
 func interact():
 	if not enabled or not can_be_clicked:
@@ -14,6 +19,7 @@ func interact():
 			complete()
 			call_deferred("queue_free")
 		_: # default
+			emit_signal("action_message", round_robin_message(messages[StateManager.insanity_level]))
 			pass
 
 func _on_gameState_change(_level, state):
