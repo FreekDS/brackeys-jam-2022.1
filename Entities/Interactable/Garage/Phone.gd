@@ -15,8 +15,10 @@ signal text_sequence_completed
 
 
 func interact():
-	if not can_be_clicked:
+	if not can_be_clicked or not enabled:
 		return
+	
+	emit_signal("action_telephone", going_over)
 		
 	match StateManager.current_state:
 		StateManager.GARAGE.INIT:
@@ -49,12 +51,14 @@ func interact():
 					StateManager.insanity_level = StateManager.INSANITY.WILL_HURT
 					StateManager.current_state = StateManager.GARAGE.PHONE_DIALED
 					emit_signal("action_insanity", "IT IS REAL, IT WILL HURT YOU!")
+					complete()
 					return
 			
 			emit_signal("action_message", "So many possible phone numbers to dial...")
 		
 		_:
 			pass
+	complete()
 			
 			
 	

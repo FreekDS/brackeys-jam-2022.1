@@ -28,7 +28,9 @@ func interact():
 			emit_signal("action_message", round_robin_message(messages_1))
 		StateManager.INSANITY.WILL_HURT:
 			emit_signal("action_message", round_robin_message(messages_2))
+	
+	complete()
 
 func _on_gameState_change(_level, state):
 	if state in [StateManager.GARAGE.PICKED_UP_PHONE]:
-		enabled = true
+		enable()

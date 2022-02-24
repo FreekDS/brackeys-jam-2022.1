@@ -9,9 +9,10 @@ func interact():
 	visible = false
 	yield(get_tree().create_timer(3), "timeout")
 	StateManager.state_meta['items'] = ['crowbar']
+	complete()
 	queue_free()
 
 func _on_gameState_change(_level, state):
 	if state in [StateManager.GARAGE.CLOSET_DRILLED]:
-		enabled = true
+		enable()
 		visible = true

@@ -15,8 +15,11 @@ signal on_interact(with)
 signal action_end_level()
 # warning-ignore:unused_signal
 signal action_insanity(text)
+signal resume
 
 var enabled = false
+var prev_enabled = false
+var is_paused = false
 
 var can_be_clicked = false
 var mouse_in = false
@@ -96,8 +99,19 @@ func interact():
 	
 	if can_be_clicked:
 		emit_signal("on_interact", self.name)
-		
+
+func complete():
+	emit_signal("resume")
 
 func _on_gameState_change(_level, _state):
 	pass
+
+
+func enable():
+	enabled = true
+	prev_enabled = true
+	
+func disable():
+	enabled = false
+	prev_enabled = false
 
