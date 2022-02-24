@@ -5,8 +5,8 @@ signal transitioned_to(level, state)
 signal level_changed(level)
 
 func _ready():
-	current_level = LEVELS.LIVING
-	current_state = LIVING.INIT
+	current_level = LEVELS.GARAGE
+	current_state = GARAGE.INIT
 
 
 func notify():
@@ -14,13 +14,9 @@ func notify():
 
 
 enum LEVELS {
-<<<<<<< HEAD
 	GARAGE ,
+	LIVING,
 	KITCHEN
-=======
-	GARAGE,
-	LIVING
->>>>>>> 27b825add8c3520f17189e9538bc061a69be7623
 }
 
 
@@ -68,13 +64,19 @@ func change_state(new_state):
 	current_state = new_state
 	state_meta.clear()
 	notify()
-	if(new_state==GARAGE.END):
-		change_level("kitchen")
+	if(current_level==LEVELS.GARAGE && new_state==GARAGE.END):
+		current_state=LIVING.INIT
+		change_level("Living")
+		current_level = LEVELS.LIVING
+	elif(current_level==LEVELS.LIVING && new_state==LIVING.END):
+		change_level("Kitchen")
 		
 
 
 func change_level(new_level):
-	current_level = new_level
+	
+	insanity_level=INSANITY.CANNOT_HURT
+	
 	#This signal will be picked up in de SceneChanger
 	emit_signal("level_changed", new_level)
 	notify()

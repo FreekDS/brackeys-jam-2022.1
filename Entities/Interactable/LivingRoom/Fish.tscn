@@ -62,7 +62,5 @@ margin_right = 526.0
 margin_bottom = 90.0
 rect_scale = Vector2( 0.25, 0.25 )
 bbcode_text = "Thanks, I'm hungry too"
-visible_characters = -1
-percent_visible = 1.0
 text = "Thanks, I'm hungry too"
 text_content = "Thanks, I'm hungry too"

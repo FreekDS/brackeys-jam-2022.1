@@ -14,6 +14,9 @@ func handle_level_changed(currentLevelName:String):
 		"garage":
 			nextLevel=load("res://Game/Levels/Garage/Garage.tscn").instance()
 			currentLevelEnum=StateManager.LEVELS.GARAGE
+		"Living":
+			nextLevel=load("res://Game/Levels/LivingRoom/LivingRoom.tscn").instance()
+			currentLevelEnum=StateManager.LEVELS.LIVING
 		"kitchen":
 			nextLevel=load("res://Game/Levels/Kitchen/Kitchen.tscn").instance()
 			currentLevelEnum=StateManager.LEVELS.KITCHEN
@@ -32,6 +35,10 @@ func handle_scene_changed(currentLevelName:String):
 			match currentLevelName:
 				_:
 					nextLevel=load("res://Game/Levels/Garage/Garage.tscn").instance()
+		StateManager.LEVELS.LIVING:
+			match currentLevelName:
+				_:
+					nextLevel=load("res://Game/Levels/LivingRoom/LivingRoom.tscn").instance()
 		StateManager.LEVELS.KITCHEN:
 			match currentLevelName:
 				"scene1":
