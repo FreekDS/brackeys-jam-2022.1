@@ -29,7 +29,6 @@ func interact():
 		return
 	
 	if can_be_clicked:
-		
 		if StateManager.current_state == StateManager.GARAGE.PHONE_DIALED:
 			if StateManager.state_meta.has('items') and StateManager.state_meta['items'].has('batteries'):
 				StateManager.state_meta['items'].append('drill')
