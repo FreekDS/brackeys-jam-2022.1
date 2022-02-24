@@ -6,6 +6,7 @@ onready var glitch = $ScreenGlitch
 
 export var text = "it is not real, it cannot hurt you" setget set_text
 
+signal playing(no_fear)
 signal finished
 
 func set_text(t):
@@ -29,6 +30,8 @@ func trigger(new_text = null):
 			glitch.material.set_shader_param("strength", 16)
 		StateManager.INSANITY.HURT:
 			glitch.material.set_shader_param("strength", 20)
+	
+	emit_signal("playing", StateManager.insanity_level != StateManager.INSANITY.CANNOT_HURT)
 	
 	visible = true
 	yield(get_tree().create_timer(3), "timeout")

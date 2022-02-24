@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Entities/Interactable/Interactable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Levels/LivingRoom/Art/LR_tv.png" type="Texture" id=2]
+[ext_resource path="res://televies_shader.tres" type="Material" id=3]
+[ext_resource path="res://Ah de rik se/Ah de rik se.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Interactable/LivingRoom/Televies.gd" type="Script" id=5]
+[ext_resource path="res://UI/TextTooltip.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -41,15 +45,180 @@ shader_param/thickness = 0.0
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 23.5, 11 )
 
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Screen:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Screen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OnOffButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "turn_off"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Screen:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.04 ), Vector2( 0.01, 0.01 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Screen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OnOffButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "turn_on"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Screen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Screen:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.9, 0.04 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OnOffButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [node name="Televies" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 2 )
 texture = ExtResource( 2 )
 
-[node name="Area2D" parent="." index="2"]
-visible = true
-
 [node name="CollisionPolygon2D" parent="Area2D" index="0"]
 position = Vector2( -0.5, 0 )
 shape = SubResource( 3 )
+
+[node name="Screen" type="Node2D" parent="." index="3"]
+
+[node name="Noise" type="ColorRect" parent="Screen" index="0"]
+material = ExtResource( 3 )
+margin_left = -19.0
+margin_top = -7.0
+margin_right = 18.0
+margin_bottom = 8.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ah de rik se" parent="Screen" index="1" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( -0.499999, 0.5 )
+scale = Vector2( 0.149798, 0.0828729 )
+
+[node name="TeleviesAnimations" type="AnimationPlayer" parent="." index="4"]
+anims/RESET = SubResource( 4 )
+anims/turn_off = SubResource( 5 )
+anims/turn_on = SubResource( 6 )
+
+[node name="Text" parent="." index="5" instance=ExtResource( 6 )]
+visible = false
+margin_left = -51.0
+margin_top = -29.0
+margin_right = 154.0
+margin_bottom = 13.0
+rect_scale = Vector2( 0.5, 0.5 )
+bbcode_text = "[center]It is not real, it cannot hurt you[/center]"
+meta_underlined = false
+text = "It is not real, it cannot hurt you"
+text_content = "[center]It is not real, it cannot hurt you[/center]"
+
+[node name="OnOffButton" type="ColorRect" parent="." index="6"]
+margin_left = 14.5
+margin_top = 9.0
+margin_right = 15.75
+margin_bottom = 10.25
+rect_scale = Vector2( 1.27116, 1.18184 )
+color = Color( 0.184314, 0.878431, 0.552941, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

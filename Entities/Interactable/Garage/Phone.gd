@@ -55,16 +55,8 @@ func interact():
 			emit_signal("action_message", "So many possible phone numbers to dial...")
 		
 		_:
-			pass
+			complete()
 	complete()
-			
-			
-	
-#	if going_over:
-#		deactivate()
-#	else:
-#		activate()
-	.interact()
 
 func _text_sequence(texts):
 	for t in texts:

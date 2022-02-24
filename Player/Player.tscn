@@ -205,7 +205,7 @@ nodes/fear/position = Vector2( 700, 120 )
 nodes/moving/node = SubResource( 14 )
 nodes/moving/position = Vector2( 360, 120 )
 nodes/output/position = Vector2( 940, 120 )
-node_connections = [ "output", 0, "fear", "moving", 0, "Idle", "moving", 1, "Walk", "fear", 0, "moving", "fear", 1, "Fear" ]
+node_connections = [ "output", 0, "fear", "fear", 0, "moving", "fear", 1, "Fear", "moving", 0, "Idle", "moving", 1, "Walk" ]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )

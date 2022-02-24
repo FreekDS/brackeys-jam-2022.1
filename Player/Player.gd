@@ -6,6 +6,7 @@ export var GRAVITY = 3000
 #export var GRAVITY = 0
 
 var velocity = Vector2.ZERO
+var disable_movement = false
 
 onready var text = $CanvasLayer/Text
 onready var textPos = $TextPosition
@@ -18,6 +19,8 @@ onready var Neck = $NeckJoint
 signal interact
 
 func get_input():
+	if disable_movement:
+		return 0
 	var dir = 0
 	if Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
 		dir = -1
@@ -40,7 +43,7 @@ func _physics_process(delta):
 	velocity.y += GRAVITY * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
 	if Input.is_action_pressed("jump"):
-		if is_on_floor():
+		if is_on_floor() and not disable_movement:
 			velocity.y = -jump_strength
 	
 	
@@ -59,17 +62,9 @@ func _physics_process(delta):
 			Neck.rotation_degrees = clamp(Neck.rotation_degrees, -20, 20)
 		else:
 			Neck.rotation_degrees = 0
-			
-
-#	var look_direction = get_global_mouse_position()
-#	if is_facing_left():
-#		var x_distance = look_direction.x - Neck.global_position.x
-#		look_direction.x -= x_distance
-#
-#	Neck.look_at(get_global_mouse_position())
-#	var rotation_max = 20
-#	Neck.rotation_degrees = clamp(Neck.rotation_degrees, -rotation_max, rotation_max)
-
+	
+	if disable_movement:
+		Neck.rotation_degrees = 0
 	
 	# Animations
 	if velocity != Vector2.ZERO:
@@ -92,3 +87,15 @@ func _unhandled_input(event):
 	if event is InputEventKey or event is InputEventMouseButton:
 		if event.is_action_pressed("interact"):
 			emit_signal("interact")
+
+
+func _on_InsanityStateDisplay_playing(fear=true):
+	disable_movement = true
+	if fear:
+		PlayerAnimations["parameters/fear/blend_amount"] = 1.0
+
+
+func _on_InsanityStateDisplay_finished():
+	disable_movement = false
+	PlayerAnimations["parameters/fear/blend_amount"] = 0.0
+

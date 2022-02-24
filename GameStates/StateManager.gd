@@ -4,8 +4,8 @@ extends Node
 signal transitioned_to(level, state)
 
 func _ready():
-	current_level = LEVELS.GARAGE
-	current_state = GARAGE.INIT
+	current_level = LEVELS.LIVING
+	current_state = LIVING.INIT
 
 
 func notify():
@@ -13,7 +13,8 @@ func notify():
 
 
 enum LEVELS {
-	GARAGE
+	GARAGE,
+	LIVING
 }
 
 
@@ -34,6 +35,21 @@ enum GARAGE {
 	PHONE_DIALED,
 	DRILL_ACQUIRED,
 	CLOSET_DRILLED,
+	END
+}
+
+enum LIVING {
+	INIT,
+	TV_INTERACTED,
+	THIRSTY,
+	BOTTLE_TAKEN,
+	PLANT_WATERED,	# increase insanity
+	FISH_WATERED,
+	FOOD_TAKEN,
+	FISH_FED,
+	BOX_INTERACTED,	# increase insanity
+	MAP_CHECKED,
+	GUN_TAKEN,
 	END
 }
 

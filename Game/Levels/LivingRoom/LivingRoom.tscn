@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://UI/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=2]
@@ -15,16 +15,18 @@
 [ext_resource path="res://Entities/Interactable/LivingRoom/PizzaBox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Entities/Interactable/LivingRoom/Packages1.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Entities/Interactable/LivingRoom/Map.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Entities/Interactable/LivingRoom/Packages2.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Entities/Interactable/LivingRoom/Guitar.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Entities/Interactable/LivingRoom/FishFood.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Entities/Interactable/LivingRoom/Shotgun.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Entities/Interactable/LivingRoom/Bottle.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Entities/Interactable/LivingRoom/Lamp.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Game/Levels/LivingRoom/Art/LR_BG.png" type="Texture" id=22]
+[ext_resource path="res://Game/InteractablesManager.gd" type="Script" id=23]
 
 [node name="LivingRoom" type="Node"]
 
 [node name="Background" parent="." instance=ExtResource( 1 )]
+texture = ExtResource( 22 )
 
 [node name="Game" type="Node2D" parent="."]
 
@@ -45,74 +47,113 @@ position = Vector2( 50, -40 )
 position = Vector2( 1000, -50 )
 
 [node name="InteractablesBack" type="Node2D" parent="Game"]
+script = ExtResource( 23 )
+PlayerPath = NodePath("../Player")
+InsanityLayerPath = NodePath("../InsanityLayer/InsanityStateDisplay")
+OtherInteractablesPath = NodePath("../InteractablesFront")
 
 [node name="Bottle" parent="Game/InteractablesBack" instance=ExtResource( 20 )]
+position = Vector2( -157, 359 )
+scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Clock" parent="Game/InteractablesBack" instance=ExtResource( 12 )]
-debug_draw = false
-
-[node name="Couch" parent="Game/InteractablesBack" instance=ExtResource( 7 )]
+position = Vector2( -287, 142 )
+scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Dresser" parent="Game/InteractablesBack" instance=ExtResource( 8 )]
+position = Vector2( -51, 461 )
+scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Fish" parent="Game/InteractablesBack" instance=ExtResource( 9 )]
+position = Vector2( -83, 191 )
+scale = Vector2( 6.5, 6.5 )
 debug_draw = false
+detection_radius = 250
 
 [node name="FishFood" parent="Game/InteractablesBack" instance=ExtResource( 18 )]
+position = Vector2( 18, 204 )
+scale = Vector2( 6.5, 6.5 )
 debug_draw = false
+detection_radius = 250
 
 [node name="Guitar" parent="Game/InteractablesBack" instance=ExtResource( 17 )]
+position = Vector2( 1159, 440 )
+scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Lamp" parent="Game/InteractablesBack" instance=ExtResource( 21 )]
-debug_draw = false
-
-[node name="Map" parent="Game/InteractablesBack" instance=ExtResource( 15 )]
-debug_draw = false
-
-[node name="Packages1" parent="Game/InteractablesBack" instance=ExtResource( 14 )]
-debug_draw = false
-
-[node name="Packages2" parent="Game/InteractablesBack" instance=ExtResource( 16 )]
-debug_draw = false
-
-[node name="PictureFrame" parent="Game/InteractablesBack" instance=ExtResource( 6 )]
-debug_draw = false
-
-[node name="PizzaBox" parent="Game/InteractablesBack" instance=ExtResource( 13 )]
-debug_draw = false
-
-[node name="Plant" parent="Game/InteractablesBack" instance=ExtResource( 5 )]
-debug_draw = false
-
-[node name="Shelf" parent="Game/InteractablesBack" instance=ExtResource( 11 )]
+position = Vector2( 1385, 361 )
+scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Shotgun" parent="Game/InteractablesBack" instance=ExtResource( 19 )]
+position = Vector2( 1052, 268 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Map" parent="Game/InteractablesBack" instance=ExtResource( 15 )]
+position = Vector2( 1009, 197 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+detection_radius = 400
+
+[node name="Packages1" parent="Game/InteractablesBack" instance=ExtResource( 14 )]
+position = Vector2( 906, 476 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="PictureFrame" parent="Game/InteractablesBack" instance=ExtResource( 6 )]
+position = Vector2( 27, 375 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Plant" parent="Game/InteractablesBack" instance=ExtResource( 5 )]
+position = Vector2( -374, 443 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Shelf" parent="Game/InteractablesBack" instance=ExtResource( 11 )]
+position = Vector2( -47, 240 )
+scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Televies" parent="Game/InteractablesBack" instance=ExtResource( 10 )]
+position = Vector2( 395, 234 )
+scale = Vector2( 6.5, 6.5 )
 debug_draw = false
+detection_radius = 250
 
 [node name="Player" parent="Game" instance=ExtResource( 4 )]
-visible = false
+position = Vector2( -262, 408 )
 scale = Vector2( 1.733, 1.733 )
 
 [node name="InteractablesFront" type="Node2D" parent="Game"]
 
+[node name="PizzaBox" parent="Game/InteractablesFront" instance=ExtResource( 13 )]
+position = Vector2( 599, 518 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Couch" parent="Game/InteractablesFront" instance=ExtResource( 7 )]
+position = Vector2( 328, 512 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
 [node name="Ground" type="StaticBody2D" parent="Game"]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game/Ground"]
-position = Vector2( 450, 250 )
+position = Vector2( 449, 253 )
 scale = Vector2( 100, 35 )
 build_mode = 1
-polygon = PoolVector2Array( -8.84, -7.11429, -8.82, 7.85714, 10.03, 7.85714, 10.03, -7.17143, 10.27, -7.17143, 10.27, 9.97143, -9.32, 9.94286, -9.31, -7.17143 )
+polygon = PoolVector2Array( -8.84, -7.11429, -8.8, 8.57143, 10, 8.57143, 10.03, -7.17143, 10.27, -7.17143, 10.27, 9.97143, -9.32, 9.94286, -9.31, -7.17143 )
 
 [node name="InsanityLayer" type="CanvasLayer" parent="Game"]
 
 [node name="InsanityStateDisplay" parent="Game/InsanityLayer" instance=ExtResource( 3 )]
 visible = false
+
+[connection signal="finished" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_finished"]
+[connection signal="playing" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_playing"]
