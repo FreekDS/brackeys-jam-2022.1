@@ -28,6 +28,7 @@ func set_play(can_play):
 	if not tween:
 		return
 	if can_play:
+		self.percent_visible = 0
 		play_text()
 	else:
 		self.percent_visible = 0
@@ -36,11 +37,14 @@ func set_play(can_play):
 	
 func set_content(t):
 	text_content = t
+	percent_visible = 0
 	self.bbcode_text = text_content.replace("\\n", "\n")
 
 func play_text():
 	visible = true
 	can_go = false
+	if tween.is_active():
+		tween.stop_all()
 	if not tween.is_active():
 		tween.interpolate_property(
 			self, "percent_visible",

@@ -23,6 +23,7 @@ var is_paused = false
 
 var can_be_clicked = false
 var mouse_in = false
+var mouse_was_in = false
 var detected = false
 
 export var debug_draw = true setget set_debug
@@ -62,10 +63,11 @@ func _on_mouse_over():
 	mouse_in = true
 
 
-func _on_mouse_exit():	
+func _on_mouse_exit(update=true):	
 	if mouse_in and detected:
 		play_anim(true)
-	mouse_in = false
+	if update:
+		mouse_in = false
 
 func play_anim(back = false):
 	if back:
@@ -114,4 +116,21 @@ func enable():
 func disable():
 	enabled = false
 	prev_enabled = false
+
+
+func pause():
+	if not is_paused:
+		prev_enabled = enabled
+		enabled = false
+		is_paused = true
+		mouse_was_in = mouse_in
+		_on_mouse_exit(false)
+
+func unpause():
+	if is_paused:
+		enabled = prev_enabled
+		is_paused = false
+		if enabled and mouse_was_in and mouse_in:
+			mouse_was_in = false
+			play_anim()
 
