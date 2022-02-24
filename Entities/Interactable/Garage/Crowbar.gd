@@ -4,8 +4,7 @@ extends Interactable
 func interact():
 	if not enabled or not can_be_clicked:
 		return
-	
-	emit_signal("action_message", "I will make good use out of this")
+	specific_message("I will make good use out of this")
 	visible = false
 	yield(get_tree().create_timer(3), "timeout")
 	StateManager.state_meta['items'] = ['crowbar']
@@ -13,6 +12,7 @@ func interact():
 	queue_free()
 
 func _on_gameState_change(_level, state):
+	current_message = 0
 	if state in [StateManager.GARAGE.CLOSET_DRILLED]:
 		enable()
 		visible = true

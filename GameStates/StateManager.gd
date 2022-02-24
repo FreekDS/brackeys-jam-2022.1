@@ -5,8 +5,8 @@ signal transitioned_to(level, state)
 signal level_changed(level)
 
 func _ready():
-	current_level = LEVELS.GARAGE
-	current_state = GARAGE.INIT
+	current_level = LEVELS.LIVING
+	current_state = LIVING.INIT
 
 
 func notify():
@@ -14,18 +14,23 @@ func notify():
 
 
 enum LEVELS {
+<<<<<<< HEAD
 	GARAGE ,
 	KITCHEN
+=======
+	GARAGE,
+	LIVING
+>>>>>>> 27b825add8c3520f17189e9538bc061a69be7623
 }
 
 
 var state_meta = {}
 
 enum INSANITY {
-	CANNOT_HURT,
-	MIGHT_HURT,
-	WILL_HURT,
-	HURT
+	CANNOT_HURT = 0,
+	MIGHT_HURT = 1,
+	WILL_HURT = 2,
+	HURT = 3
 }
 
 enum GARAGE {
@@ -36,6 +41,21 @@ enum GARAGE {
 	PHONE_DIALED,
 	DRILL_ACQUIRED,
 	CLOSET_DRILLED,
+	END
+}
+
+enum LIVING {
+	INIT,
+	TV_INTERACTED,
+	THIRSTY,
+	BOTTLE_TAKEN,
+	PLANT_WATERED,	# increase insanity
+	FISH_WATERED,
+	FOOD_TAKEN,
+	FISH_FED,
+	BOX_INTERACTED,	# increase insanity
+	MAP_CHECKED,
+	GUN_TAKEN,
 	END
 }
 

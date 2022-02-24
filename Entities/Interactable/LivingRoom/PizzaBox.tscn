@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Entities/Interactable/Interactable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game/Levels/LivingRoom/Art/LR_pizzaBox.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Interactable/LivingRoom/PizzaBox.gd" type="Script" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 outline_color : hint_color = vec4(1.0);
+uniform float thickness : hint_range(0, 10) = 0.2;
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * thickness;
+	
+	float outline = texture(TEXTURE, UV + vec2(-size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(0, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
+	outline = min(outline, 1.0);
+	
+	vec4 color = texture(TEXTURE, UV);
+	
+	if (color.a == 0.0) {
+		COLOR = mix(color, outline_color, outline - color.a);
+	}
+	else {
+		COLOR = color;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/outline_color = Color( 0.376471, 0.898039, 0.188235, 1 )
+shader_param/thickness = 0.0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 13.5, 9.5 )
+
+[node name="PizzaBox" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 2 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+position = Vector2( -0.5, -0.5 )
+shape = SubResource( 3 )

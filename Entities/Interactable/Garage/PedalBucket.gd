@@ -17,9 +17,9 @@ func interact():
 						Sprite.frame = 0
 						opened = false
 						return
-				emit_signal("action_message", "Hey, whats this?")
+				specific_message("Hey, whats this?")
 				yield(get_tree().create_timer(2), "timeout")
-				emit_signal("action_message", "There are batteries in here!")
+				specific_message("There are batteries in here!")
 				if not StateManager.state_meta.has('items'):
 					StateManager.state_meta['items'] = []
 				StateManager.state_meta['items'].append('batteries')
@@ -37,5 +37,6 @@ func interact():
 
 
 func _on_gameState_change(_level, state):
+	current_message = 0
 	if state in [StateManager.GARAGE.PICKED_UP_PHONE]:
 		enable()

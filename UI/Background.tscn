@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Game/Levels/Garage/Art/Grg_BG.png" type="Texture" id=1]
+
+[node name="Background" type="TextureRect"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -430.0
+margin_right = 430.0
+rect_min_size = Vector2( 480, 200 )
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}

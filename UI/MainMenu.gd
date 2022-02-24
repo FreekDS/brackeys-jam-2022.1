@@ -45,3 +45,8 @@ func _on_Back_pressed():
 		0.2
 	)
 	MyTween.start()
+
+
+func _on_ExitButton_pressed():
+	get_tree().quit()
+
