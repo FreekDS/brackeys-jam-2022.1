@@ -29,10 +29,10 @@ func interact():
 		_:
 			match StateManager.insanity_level:
 				StateManager.INSANITY.CANNOT_HURT:
-					emit_signal("action_message", round_robin_message(messages_0))
+					emit_signal("action_message", round_robin_message(messages_0), offset)
 					pass
 				StateManager.INSANITY.MIGHT_HURT:
-					emit_signal("action_message", round_robin_message(messages_1))
+					emit_signal("action_message", round_robin_message(messages_1), offset)
 					pass
 				StateManager.INSANITY.WILL_HURT:
 					# Not applicable

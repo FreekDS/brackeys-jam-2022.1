@@ -21,6 +21,7 @@ func _ready():
 		c.connect("action_telephone", self, "pause_interaction")
 		c.connect("resume", self, "unpause_interaction")
 		
+# warning-ignore:return_value_discarded
 		StateManager.connect("transitioned_to", c, "_on_gameState_change")
 
 	yield(get_tree(), "idle_frame")
@@ -32,6 +33,7 @@ func _process(_delta):
 
 func pause_interaction(_t=null, _o=null):
 	for c in get_children():
+		c.pause()
 		if not c.is_paused:
 			c.prev_enabled = c.enabled
 			c.enabled = false
@@ -39,6 +41,4 @@ func pause_interaction(_t=null, _o=null):
 
 func unpause_interaction():
 	for c in get_children():
-		if c.is_paused:
-			c.enabled = c.prev_enabled
-			c.is_paused = false
+		c.unpause()
