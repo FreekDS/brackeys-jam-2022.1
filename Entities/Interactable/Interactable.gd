@@ -256,8 +256,6 @@ func _on_gameState_change(_level, state):
 	if state in disable_on:
 		disable()
 
-
-
 # Enable the interactable
 func enable():
 	enabled = true

@@ -5,8 +5,8 @@ signal transitioned_to(level, state)
 signal level_changed(level)
 
 func _ready():
-	current_level = LEVELS.GARAGE
-	current_state = GARAGE.INIT
+	current_level = LEVELS.BATHROOM
+	current_state = BATHROOM.INIT
 
 
 func notify():
@@ -59,11 +59,18 @@ enum LIVING {
 enum BATHROOM {
 	INIT,
 	MIRROR_INTERACTED,
-	TOWEL_1,
+	TOWEL_1,	# TODO: fix towel problem
 	TOWEL_2,
+	TOWELS_DEPOSITED,
 	TOOTHPASTE_TAKEN,
 	BRUSH_TAKEN,
-	
+	TEETH_BRUSHED,
+	SHOWER_OPENED,
+	SOAP_TAKEN,
+	DRESSER_OPENED,
+	HAIR_DRYER_TAKEN,
+	BATH_FILLED,
+	END
 }
 
 var current_level = null

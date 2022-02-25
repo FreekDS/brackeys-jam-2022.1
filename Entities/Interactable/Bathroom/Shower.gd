@@ -9,7 +9,11 @@ var opened = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	enable_on = [
-		StateManager.BATHROOM.INIT
+		StateManager.BATHROOM.TEETH_BRUSHED,
+		StateManager.BATHROOM.SOAP_TAKEN
+	]
+	disable_on = [
+		StateManager.BATHROOM.SHOWER_OPENED
 	]
 
 func interact():
@@ -18,6 +22,7 @@ func interact():
 	
 	if not opened:
 		ShowerAnimations.play("Open")
+		StateManager.change_state(StateManager.BATHROOM.SHOWER_OPENED)
 		opened = true
 	else:
 		ShowerAnimations.play_backwards("Open")

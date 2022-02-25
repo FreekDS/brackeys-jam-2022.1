@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Interactable/Interactable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Levels/Bathroom/Art/BR_Rail.png" type="Texture" id=2]
 [ext_resource path="res://Game/Levels/Bathroom/Art/BR_railTowel.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Interactable/Bathroom/TowelRail.gd" type="Script" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -43,6 +44,7 @@ shader_param/thickness = 0.0
 extents = Vector2( 12.5, 9 )
 
 [node name="TowelRail" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 2 )

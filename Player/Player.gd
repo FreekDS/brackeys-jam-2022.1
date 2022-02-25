@@ -6,7 +6,9 @@ export var GRAVITY = 3000
 #export var GRAVITY = 0
 
 var velocity = Vector2.ZERO
-var disable_movement = false
+export var in_cutscene = false
+export var disable_movement = false
+export var neck_rotation = 0 setget set_neck_rotation
 
 onready var text = $CanvasLayer/Text
 onready var textPos = $TextPosition
@@ -18,18 +20,24 @@ onready var Neck = $NeckJoint
 
 signal interact
 
+func flip(value):
+	BodySprites.flip_h = value
+	HeadSprites.flip_h = value
+	
+func set_neck_rotation(rotation_deg):
+	Neck.rotation_degrees = rotation_deg
+	
+
 func get_input():
 	if disable_movement:
 		return 0
 	var dir = 0
 	if Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
 		dir = -1
-		BodySprites.flip_h = true
-		HeadSprites.flip_h = true
+		flip(true)
 	elif Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
 		dir = 1
-		BodySprites.flip_h = false
-		HeadSprites.flip_h = false
+		flip(false)
 	return dir
 	
 
@@ -38,6 +46,8 @@ func is_facing_left():
 
 
 func _physics_process(delta):
+	if in_cutscene:
+		return
 	var dir = get_input()
 	velocity.x = dir * speed
 	velocity.y += GRAVITY * delta

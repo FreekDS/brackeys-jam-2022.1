@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://UI/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Levels/Bathroom/Art/BR_BG.png" type="Texture" id=2]
@@ -21,6 +21,188 @@
 [ext_resource path="res://Entities/Interactable/Bathroom/Mirror.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Entities/Interactable/Bathroom/Hairdryer.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Entities/Interactable/Bathroom/Shampoooo.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Game/Levels/Bathroom/GameBathroom.gd" type="Script" id=22]
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 40.0
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 100, 0 )
+initial_velocity = 50.0
+angular_velocity = 50.0
+angular_velocity_random = 0.2
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 20.0
+damping = 10.0
+scale = 3.0
+color = Color( 0.223529, 0.266667, 0.545098, 1 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "LevelEnd"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Game/Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -10, 400 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Game/Player:in_cutscene")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Game/AnimationProps/Hairdryer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2.8, 3.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -254, 331 ), Vector2( -247, 489 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Game/AnimationProps/Hairdryer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Game/AnimationProps/Splash:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("Game/Player")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "flip"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Game/Player:neck_rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2.6, 2.8, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 0, 20, -20 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Game/Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -228, 380 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Game/AnimationProps/Hairdryer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -254, 331 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Game/AnimationProps/Hairdryer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Game/AnimationProps/Splash:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Game/Player:disable_movement")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Game/Player:in_cutscene")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="Bathroom" type="Node"]
 
@@ -28,6 +210,7 @@
 texture = ExtResource( 2 )
 
 [node name="Game" type="Node2D" parent="."]
+script = ExtResource( 22 )
 
 [node name="Camera" type="Node2D" parent="Game"]
 
@@ -64,16 +247,10 @@ debug_draw = false
 [node name="Dresser2" parent="Game/InteractablesBack" instance=ExtResource( 8 )]
 position = Vector2( 300, 452 )
 scale = Vector2( 6.5, 6.5 )
-debug_draw = false
 
 [node name="Hairdryer" parent="Game/InteractablesBack" instance=ExtResource( 20 )]
 visible = false
 position = Vector2( 300, 451 )
-scale = Vector2( 6.5, 6.5 )
-debug_draw = false
-
-[node name="LeSoap" parent="Game/InteractablesBack" instance=ExtResource( 18 )]
-position = Vector2( 1353, 466 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
@@ -84,6 +261,12 @@ debug_draw = false
 
 [node name="Shower" parent="Game/InteractablesBack" instance=ExtResource( 12 )]
 position = Vector2( 1292, 358 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="LeSoap" parent="Game/InteractablesBack" instance=ExtResource( 18 )]
+visible = false
+position = Vector2( 1353, 466 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
@@ -118,7 +301,7 @@ scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Player" parent="Game" instance=ExtResource( 3 )]
-position = Vector2( -210, 374 )
+position = Vector2( -228, 380 )
 scale = Vector2( 1.733, 1.733 )
 
 [node name="InteractablesFront" type="Node2D" parent="Game"]
@@ -146,5 +329,32 @@ polygon = PoolVector2Array( -8.84, -7.11429, -8.8, 8.57143, 10, 8.57143, 10.03, 
 [node name="InsanityStateDisplay" parent="Game/InsanityLayer" instance=ExtResource( 5 )]
 visible = false
 
+[node name="AnimationProps" type="Node2D" parent="Game"]
+
+[node name="Hairdryer" parent="Game/AnimationProps" instance=ExtResource( 20 )]
+visible = false
+position = Vector2( -254, 331 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Splash" type="Particles2D" parent="Game/AnimationProps"]
+position = Vector2( -245, 422 )
+z_index = 3
+emitting = false
+amount = 100
+lifetime = 1.8
+one_shot = true
+speed_scale = 5.0
+explosiveness = 0.2
+process_material = SubResource( 3 )
+
+[node name="LevelAnimations" type="AnimationPlayer" parent="Game"]
+root_node = NodePath("../..")
+autoplay = "RESET"
+anims/LevelEnd = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[connection signal="action_end_level" from="Game/InteractablesFront/Bathtub" to="Game" method="_on_Bathtub_action_end_level"]
 [connection signal="finished" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_finished"]
 [connection signal="playing" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_playing"]
+[connection signal="animation_finished" from="Game/LevelAnimations" to="Game" method="_on_LevelAnimations_animation_finished"]
