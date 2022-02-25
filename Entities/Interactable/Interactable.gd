@@ -24,6 +24,7 @@ Volgende stappen moeten altijd gevolgd worden:
 		- OF klik op de wrench/schroevendraaier naast filter properties
 			en selecteer make sub-resources unique
 	8. Verander de CollisionPolygon2D shape zoals gewenst
+	9. Save
 
 Proficiat, u heeft net u eigen interactable gemaakt
 
@@ -44,7 +45,7 @@ maken voor u.
 
 SECTIE 1: enable/disable
 
-Voor het (de)activeren van u interactable is het voldoende om de disable_on of disable_on
+Voor het (de)activeren van u interactable is het voldoende om de disable_on of enable_on
 property te vullen in de _ready functie
 
 eg. 	func _ready():
@@ -75,7 +76,8 @@ func interact():
 	
 BELANGRIJK: complete() moet ALTIJD gecalled worden op het einde van executie
 Indien u een eerder return wenst te doen uit de interact functie, moet deze
-voorafgegaan zijn door een complete() call.
+voorafgegaan zijn door een complete() call. 
+(de enige uitzondering geldt bij de eerste check if statement)
 
 
 HOOFDSTUK 3: ENKELE NUTTIGE FUNCTIES
@@ -148,6 +150,8 @@ export var detection_radius = 200 setget set_radius
 # Round robin functionality
 var current_message = 0
 func round_robin_message(messages):
+	if len(messages) == 0:
+		return ""
 	current_message = current_message % len(messages)
 	var msg = messages[current_message]
 	current_message += 1
