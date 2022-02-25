@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://UI/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Levels/Bathroom/Art/BR_BG.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Entities/Interactable/Bathroom/LeSoap.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Entities/Interactable/Bathroom/Mirror.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Entities/Interactable/Bathroom/Hairdryer.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Entities/Interactable/Bathroom/Shampoooo.tscn" type="PackedScene" id=21]
 
 [node name="Bathroom" type="Node"]
 
@@ -51,7 +52,7 @@ InsanityLayerPath = NodePath("../InsanityLayer/InsanityStateDisplay")
 OtherInteractablesPath = NodePath("../InteractablesFront")
 
 [node name="BatteryLamp" parent="Game/InteractablesBack" instance=ExtResource( 7 )]
-position = Vector2( 253, 323 )
+position = Vector2( 253, 325 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
@@ -61,18 +62,17 @@ scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Dresser2" parent="Game/InteractablesBack" instance=ExtResource( 8 )]
-position = Vector2( 300, 449 )
+position = Vector2( 300, 452 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Hairdryer" parent="Game/InteractablesBack" instance=ExtResource( 20 )]
-visible = false
 position = Vector2( 300, 451 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="LeSoap" parent="Game/InteractablesBack" instance=ExtResource( 18 )]
-position = Vector2( 1336, 377 )
+position = Vector2( 1353, 466 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
@@ -82,7 +82,7 @@ scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Shower" parent="Game/InteractablesBack" instance=ExtResource( 12 )]
-position = Vector2( 1292, 354 )
+position = Vector2( 1292, 358 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
@@ -92,7 +92,7 @@ scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Toofpest" parent="Game/InteractablesBack" instance=ExtResource( 15 )]
-position = Vector2( 860, 447 )
+position = Vector2( 860, 450 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
@@ -124,6 +124,11 @@ scale = Vector2( 1.733, 1.733 )
 
 [node name="Bathtub" parent="Game/InteractablesFront" instance=ExtResource( 10 )]
 position = Vector2( -245, 486 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Shampoooo" parent="Game/InteractablesFront" instance=ExtResource( 21 )]
+position = Vector2( -121, 427 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
