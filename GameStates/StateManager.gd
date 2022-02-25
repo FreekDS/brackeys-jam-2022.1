@@ -16,6 +16,7 @@ func notify():
 enum LEVELS {
 	GARAGE ,
 	LIVING,
+	BATHROOM,
 	KITCHEN
 }
 
@@ -53,6 +54,16 @@ enum LIVING {
 	MAP_CHECKED,
 	GUN_TAKEN,
 	END
+}
+
+enum BATHROOM {
+	INIT,
+	MIRROR_INTERACTED,
+	TOWEL_1,
+	TOWEL_2,
+	TOOTHPASTE_TAKEN,
+	BRUSH_TAKEN,
+	
 }
 
 var current_level = null

@@ -4,6 +4,114 @@ class_name Interactable
 
 onready var animations = $AnimationPlayer
 
+
+"""
+----------------------------------
+DE GOUDEN GIDS VOOR INTERACTABLES
+----------------------------------
+
+HOOFDSTUK 1: TOEVOEGEN NIEUWE INTERACTABLE
+
+Volgende stappen moeten altijd gevolgd worden:
+	1. Kies Scene -> New Inherited Scene
+	2. Navigeer naar res://Entities/Interactable
+	3. Selecteer Interactable.tscn
+	4. Bewerk de Sprite child van de inherited scene
+	5. Verander Root naam naar de gewenste naam
+	6. Ga naar Area2D/CollisionPolygon2D en selecteer deze
+	7. Maak de shape property hiervan uniek
+		- Right click op shape -> make unique
+		- OF klik op de wrench/schroevendraaier naast filter properties
+			en selecteer make sub-resources unique
+	8. Verander de CollisionPolygon2D shape zoals gewenst
+
+Proficiat, u heeft net u eigen interactable gemaakt
+
+
+HOOFDSTUK 2: BEWERKEN VAN UW FAVORIETE INTERACTABLES
+
+We kennen het allemaal: u maakte net uw nieuwe favoriete interactable, MAAR
+het is niet interactable en doet niets. Niet getreurd, dit hoofdstuk biedt raad!
+
+Voor uw interactable functionaliteit te geven is het noodzakelijk dit script te extenden
+Dit kan verwezelijkt worden door hetvolgende:
+	1. Right click op Root node
+	2. Selecteer Extend Script
+
+Wat kan u van dit script verwachten?
+Alles wat u maar wilt in feite. Er zijn een aantal zaken die het gemakkelijker
+maken voor u.
+
+SECTIE 1: enable/disable
+
+Voor het (de)activeren van u interactable is het voldoende om de disable_on of disable_on
+property te vullen in de _ready functie
+
+eg. 	func _ready():
+			enable_on = [StateManager.GARAGE.INIT]
+			disable_on = [StateManager.GARAGE.PHONE_PICKED_UP]
+			
+Soms is het gewenst extra dingen te doen bij het veranderen van state
+Dan kan de functie _on_gameState_change overschreven worden.
+Belangrijk hier is dat de functie uit het parent script ook uitgevoerd moet worden
+
+eg. 	func _on_gameState_change(_level, state):
+			._on_gameState_change(_level, state)
+			# Uw fantastische code die uitgevoerd wordt op state change
+
+SECTIE 2: Interacties
+
+Interactie implementeren kan gedaan worden in de interact() functie.
+De enige regel hier is dat deze functie volgende structuur volgt
+
+func interact():
+	if not enabled or not can_be_clicked:
+		return
+	
+	# Uw magische interactie code
+	# Waarbij u de state kan gebruiken of whatever
+	
+	complete()
+	
+BELANGRIJK: complete() moet ALTIJD gecalled worden op het einde van executie
+Indien u een eerder return wenst te doen uit de interact functie, moet deze
+voorafgegaan zijn door een complete() call.
+
+
+HOOFDSTUK 3: ENKELE NUTTIGE FUNCTIES
+
+SECTIE 1: messaging
+
+Gemakkelijk berichten sturen in een round robin fashion kan gedaan worden als volgt:
+	1. Maak een dictionary aan genaamd messages
+	2. De key van deze dict is het INSANITY level
+	3. De value van deze dict is een lijst van mogelijke tekstjes
+	4. gebruik de functie send_round_robin(messages, [offset])
+		(offset is optioneel)
+	5. Proficiat u stuurt nu leuke berichtjes, mogelijks wilt u wachten tussen
+		berichten doe dit dan adhv yield(get_tree().create_timer(time), "timeout")
+
+SECTIE 2: overige acties
+
+Print insanity overlay
+	emit_signal("action_insanity", "insane tekst enzo")
+Het level van insane-heid wordt bepaald adhv StateManager.insanity_level
+
+
+HOOFDSTUK 3: TERMS OF SERVICE
+
+We zijn niet verantwoordelijk voor eventuele ongevallen, dit omvat:
+	- u eigen haar uittrekken omdat het ni werkt
+	- u voor de kop slaan omdat het nog steeds ni werkt
+	- van den trap sjarelen
+
+Bij enige problemen kan u terecht bij onze ombudsdienst
+Enkel binnen de kantoor uren (tussen 16u en 16u30 op maandag)
+
+"""
+
+
+
 # warning-ignore:unused_signal
 signal action_message(string, offset)
 # warning-ignore:unused_signal
@@ -48,6 +156,8 @@ func round_robin_message(messages):
 
 func send_round_robin(messages, offset=0):
 	if StateManager.insanity_level > 2:
+		return
+	if not messages.has(StateManager.insanity_level):
 		return
 	var msg = round_robin_message(messages[StateManager.insanity_level])
 	if msg and msg != "":

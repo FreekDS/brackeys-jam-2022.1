@@ -67,6 +67,7 @@ scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Hairdryer" parent="Game/InteractablesBack" instance=ExtResource( 20 )]
+visible = false
 position = Vector2( 300, 451 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
@@ -97,7 +98,7 @@ scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Toothbrush" parent="Game/InteractablesBack" instance=ExtResource( 13 )]
-position = Vector2( 962, 374 )
+position = Vector2( 962, 376 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 

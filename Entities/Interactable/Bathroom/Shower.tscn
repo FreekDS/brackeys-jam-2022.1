@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/Interactable/Interactable.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Game/Levels/Bathroom/Art/BR_shower.png" type="Texture" id=2]
+[ext_resource path="res://Game/Levels/Bathroom/Art/BR_shower_back.png" type="Texture" id=2]
+[ext_resource path="res://Game/Levels/Bathroom/Art/BR_shower_front.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Interactable/Bathroom/Shower.gd" type="Script" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -41,7 +43,39 @@ shader_param/thickness = 0.0
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 16, 25 )
 
+[sub_resource type="Animation" id=4]
+resource_name = "Open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShowerFront:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.2, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShowerFront:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
 [node name="Shower" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 2 )
@@ -50,3 +84,16 @@ texture = ExtResource( 2 )
 [node name="CollisionPolygon2D" parent="Area2D" index="0"]
 position = Vector2( 0, 0 )
 shape = SubResource( 3 )
+
+[node name="ShowerFront" type="Node2D" parent="." index="3"]
+position = Vector2( -14, 0 )
+
+[node name="ShowerFront" type="Sprite" parent="ShowerFront" index="0"]
+position = Vector2( 14, 0 )
+scale = Vector2( 1.416, 1.405 )
+texture = ExtResource( 3 )
+
+[node name="ShowerAnimations" type="AnimationPlayer" parent="." index="4"]
+autoplay = "RESET"
+anims/Open = SubResource( 4 )
+anims/RESET = SubResource( 5 )
