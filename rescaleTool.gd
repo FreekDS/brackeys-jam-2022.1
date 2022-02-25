@@ -12,4 +12,5 @@ func _run():
 	var c: Node2D
 	for d in parent.get_children():
 		d.set_scale(scale)
+		d.debug_draw = false
 

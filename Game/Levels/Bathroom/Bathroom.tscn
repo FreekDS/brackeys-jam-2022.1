@@ -1,0 +1,144 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://UI/Background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game/Levels/Bathroom/Art/BR_BG.png" type="Texture" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Camera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/InsanityStateDisplay.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game/InteractablesManager.gd" type="Script" id=6]
+[ext_resource path="res://Entities/Interactable/Bathroom/BatteryLamp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Interactable/Bathroom/Dresser2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Interactable/Bathroom/Dresser1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Interactable/Bathroom/Bathtub.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Interactable/Bathroom/Towel.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Interactable/Bathroom/Shower.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Entities/Interactable/Bathroom/Toothbrush.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/Interactable/Bathroom/Sink.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/Interactable/Bathroom/Toofpest.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Entities/Interactable/Bathroom/Washmand.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Entities/Interactable/Bathroom/TowelRail.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Entities/Interactable/Bathroom/LeSoap.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/Interactable/Bathroom/Mirror.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Entities/Interactable/Bathroom/Hairdryer.tscn" type="PackedScene" id=20]
+
+[node name="Bathroom" type="Node"]
+
+[node name="Background" parent="." instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+
+[node name="Game" type="Node2D" parent="."]
+
+[node name="Camera" type="Node2D" parent="Game"]
+
+[node name="TrackingCam" parent="Game/Camera" instance=ExtResource( 4 )]
+offset = Vector2( 0, 300 )
+current = true
+TrackingObject = NodePath("../../Player")
+stopAtEdge = true
+minX = 85
+maxX = 940
+
+[node name="Left" type="Position2D" parent="Game/Camera"]
+position = Vector2( 50, -40 )
+
+[node name="Right" type="Position2D" parent="Game/Camera"]
+position = Vector2( 1000, -50 )
+
+[node name="InteractablesBack" type="Node2D" parent="Game"]
+script = ExtResource( 6 )
+PlayerPath = NodePath("../Player")
+InsanityLayerPath = NodePath("../InsanityLayer/InsanityStateDisplay")
+OtherInteractablesPath = NodePath("../InteractablesFront")
+
+[node name="BatteryLamp" parent="Game/InteractablesBack" instance=ExtResource( 7 )]
+position = Vector2( 253, 323 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Dresser1" parent="Game/InteractablesBack" instance=ExtResource( 9 )]
+position = Vector2( 734, 453 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Dresser2" parent="Game/InteractablesBack" instance=ExtResource( 8 )]
+position = Vector2( 300, 449 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Hairdryer" parent="Game/InteractablesBack" instance=ExtResource( 20 )]
+visible = false
+position = Vector2( 300, 451 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="LeSoap" parent="Game/InteractablesBack" instance=ExtResource( 18 )]
+position = Vector2( 1336, 377 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Mirror" parent="Game/InteractablesBack" instance=ExtResource( 19 )]
+position = Vector2( 921, 306 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Shower" parent="Game/InteractablesBack" instance=ExtResource( 12 )]
+position = Vector2( 1292, 354 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Sink" parent="Game/InteractablesBack" instance=ExtResource( 14 )]
+position = Vector2( 919, 440 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Toofpest" parent="Game/InteractablesBack" instance=ExtResource( 15 )]
+position = Vector2( 860, 447 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Toothbrush" parent="Game/InteractablesBack" instance=ExtResource( 13 )]
+position = Vector2( 962, 374 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Towel" parent="Game/InteractablesBack" instance=ExtResource( 11 )]
+position = Vector2( 735, 377 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="TowelRail" parent="Game/InteractablesBack" instance=ExtResource( 17 )]
+position = Vector2( 34, 440 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Washmand" parent="Game/InteractablesBack" instance=ExtResource( 16 )]
+position = Vector2( 1092, 472 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Player" parent="Game" instance=ExtResource( 3 )]
+position = Vector2( -210, 374 )
+scale = Vector2( 1.733, 1.733 )
+
+[node name="InteractablesFront" type="Node2D" parent="Game"]
+
+[node name="Bathtub" parent="Game/InteractablesFront" instance=ExtResource( 10 )]
+position = Vector2( -245, 486 )
+scale = Vector2( 6.5, 6.5 )
+debug_draw = false
+
+[node name="Ground" type="StaticBody2D" parent="Game"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game/Ground"]
+position = Vector2( 449, 253 )
+scale = Vector2( 100, 35 )
+build_mode = 1
+polygon = PoolVector2Array( -8.84, -7.11429, -8.8, 8.57143, 10, 8.57143, 10.03, -7.17143, 10.27, -7.17143, 10.27, 9.97143, -9.32, 9.94286, -9.31, -7.17143 )
+
+[node name="InsanityLayer" type="CanvasLayer" parent="Game"]
+
+[node name="InsanityStateDisplay" parent="Game/InsanityLayer" instance=ExtResource( 5 )]
+visible = false
+
+[connection signal="finished" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_finished"]
+[connection signal="playing" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_playing"]
