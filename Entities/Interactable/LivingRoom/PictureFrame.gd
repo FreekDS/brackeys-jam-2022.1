@@ -7,6 +7,14 @@ var messages = {
 	2: ["It is a picture", "It is taken at the collosseum", "I can't remember in which country"]
 }
 
+func _ready():
+	enable_on = [
+		StateManager.LIVING.BOX_INTERACTED
+	]
+	disable_on = [
+		
+	]
+
 
 func interact():
 	if not enabled or not can_be_clicked:
@@ -14,7 +22,3 @@ func interact():
 		
 	send_round_robin(messages)
 	complete()
-
-func _on_gameState_change(_level, state):
-	if state == StateManager.LIVING.BOX_INTERACTED:
-		enable()

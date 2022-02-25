@@ -8,9 +8,14 @@ var messages = {
 		"It is just a fuse box\nIt has no feelings",
 		"Or has it?"
 	],
-	2: []
+	2: [""]
 }
 
+func _ready():
+	enable_on = [
+		StateManager.GARAGE.PICKED_UP_PHONE
+	]
+	disable_on = []
 
 
 func interact():
@@ -30,12 +35,5 @@ func interact():
 		_:
 			send_round_robin(messages, offset)
 			yield(get_tree().create_timer(1), "timeout")
-			
 
 	complete()
-
-
-func _on_gameState_change(_level, state):
-	current_message = 0
-	if state in [StateManager.GARAGE.PICKED_UP_PHONE]:
-		enable()

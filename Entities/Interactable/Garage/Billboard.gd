@@ -7,6 +7,14 @@ var messages = {
 	2: ["A bulletin board!"]
 }
 
+func _ready():
+	enable_on = [
+		StateManager.GARAGE.DIARY_OPENED,
+		StateManager.GARAGE.PICKED_UP_PHONE
+	]
+	disable_on = [
+		
+	]
 
 func interact():
 	if not enabled or not can_be_clicked:
@@ -27,9 +35,3 @@ func interact():
 		_:
 			send_round_robin(messages)
 	complete()
-
-
-func _on_gameState_change(_level, state):
-	current_message = 0
-	if state in [StateManager.GARAGE.DIARY_OPENED, StateManager.GARAGE.PICKED_UP_PHONE]:
-		enable()

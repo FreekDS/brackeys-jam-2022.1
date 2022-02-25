@@ -9,7 +9,15 @@ var messages = {
 onready var RollAnimation = $RollTween
 onready var map_node = $Sprite
 
+
+
 func _ready():
+	enable_on = [
+		StateManager.LIVING.MAP_CHECKED
+	]
+	disable_on = [
+		
+	]
 	RollAnimation.interpolate_property(
 		map_node, "scale:y", map_node.scale.y, 0.2, 0.2
 	)
@@ -27,9 +35,6 @@ func interact():
 			pass
 	complete()
 
-func _on_gameState_change(_level, state):
-	if state == StateManager.LIVING.BOX_INTERACTED:
-		enable()
 
 func _on_roll_complete(_object, _key):
 	$Area2D.visible = false

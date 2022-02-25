@@ -8,6 +8,12 @@ var messages = {
 	2: ["It is locked"]
 }
 
+func _ready():
+	enable_on = [
+		StateManager.GARAGE.PICKED_UP_PHONE
+	]
+	disable_on = []
+
 func interact():
 	if not enabled or not can_be_clicked:
 		return
@@ -26,10 +32,8 @@ func interact():
 	complete()
 
 
-func _on_gameState_change(_level, state):
-	current_message = 0
-	if state in [StateManager.GARAGE.PICKED_UP_PHONE]:
-		enable()
+func _on_gameState_change(level, state):
+	._on_gameState_change(level, state)
 	if keep_disabled:
 		disable()
 
