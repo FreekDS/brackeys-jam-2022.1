@@ -10,6 +10,14 @@ onready var TVAnimations = $TeleviesAnimations
 
 var active = true
 
+func _ready():
+	enable_on = [
+		StateManager.LIVING.INIT
+	]
+	disable_on = [
+
+	]
+
 
 func interact():
 	if not enabled or not can_be_clicked:
@@ -33,7 +41,6 @@ func interact():
 				turn_off()
 			else:
 				turn_on()
-	
 	complete()
 
 func turn_off():
@@ -48,8 +55,8 @@ func turn_on():
 	active = true
 		
 func _on_gameState_change(_level, state):
-	if state == StateManager.LIVING.INIT:
+	._on_gameState_change(_level, state)
+	if state in enable_on:
 		ScreenNoise.visible = true
 		AhDeRikSe.visible = false
-		enable()
 		

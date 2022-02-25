@@ -1,5 +1,11 @@
 extends Interactable
 
+func _ready():
+	enable_on = [
+		StateManager.GARAGE.CLOSET_DRILLED
+	]
+	disable_on = []
+
 
 func interact():
 	if not enabled or not can_be_clicked:
@@ -11,8 +17,8 @@ func interact():
 	complete()
 	queue_free()
 
-func _on_gameState_change(_level, state):
-	current_message = 0
-	if state in [StateManager.GARAGE.CLOSET_DRILLED]:
-		enable()
+
+func _on_gameState_change(level, state):
+	._on_gameState_change(level, state)
+	if state in enable_on:
 		visible = true

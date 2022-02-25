@@ -1,5 +1,9 @@
 extends Interactable
 
+func _ready():
+	# The lamp is never really enabled, it does things on state change though
+	enable_on = []
+	disable_on = []
 
 func _on_gameState_change(_level, state):
 	if state == StateManager.GARAGE.END:

@@ -8,6 +8,14 @@ var messages = {
 
 onready var Text = $Text
 
+func _ready():
+	enable_on = [
+		StateManager.LIVING.BOTTLE_TAKEN
+	]
+	disable_on = [
+		
+	]
+
 func interact():
 	if not enabled or not can_be_clicked:
 		return
@@ -29,7 +37,3 @@ func interact():
 			pass
 	
 	complete()
-
-func _on_gameState_change(_level, state):
-	if state == StateManager.LIVING.BOTTLE_TAKEN:
-		enable()

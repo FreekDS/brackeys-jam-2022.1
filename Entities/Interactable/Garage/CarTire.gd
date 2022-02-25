@@ -15,13 +15,14 @@ var messages = {
 	]
 }
 
+func _ready():
+	enable_on = [
+		StateManager.GARAGE.PICKED_UP_PHONE
+	]
+	disable_on = []
+
 func interact():
 	if not enabled or not can_be_clicked:
 		return
 	send_round_robin(messages)
 	complete()
-
-func _on_gameState_change(_level, state):
-	current_message = 0
-	if state in [StateManager.GARAGE.PICKED_UP_PHONE]:
-		enable()

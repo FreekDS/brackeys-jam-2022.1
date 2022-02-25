@@ -6,6 +6,14 @@ var messages = {
 	2: [""]
 }
 
+func _ready():
+	enable_on = [
+		StateManager.LIVING.MAP_CHECKED
+	]
+	disable_on = [
+		
+	]
+
 func interact():
 	if not enabled or not can_be_clicked:
 		return
@@ -21,7 +29,3 @@ func interact():
 		_: # default
 			emit_signal("action_message", round_robin_message(messages[StateManager.insanity_level]))
 			pass
-
-func _on_gameState_change(_level, state):
-	if state == StateManager.LIVING.MAP_CHECKED:
-		enable()
