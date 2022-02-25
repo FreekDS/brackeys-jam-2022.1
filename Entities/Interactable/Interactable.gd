@@ -139,4 +139,8 @@ func unpause():
 		if enabled and mouse_was_in and mouse_in:
 			mouse_was_in = false
 			play_anim()
+			
+func _process(delta):
+#	print(StateManager.current_state)
+	pass
 

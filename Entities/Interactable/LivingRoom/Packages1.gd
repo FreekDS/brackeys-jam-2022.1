@@ -12,7 +12,9 @@ onready var OpenSprite = $Box2
 func interact():
 	if not enabled or not can_be_clicked:
 		return
-		
+	
+	print("interact", StateManager.current_state, StateManager.LIVING.FISH_FED)
+	
 	match StateManager.current_state:
 		StateManager.LIVING.FISH_FED:
 			Sprite1.visible = false
@@ -32,4 +34,5 @@ func interact():
 
 func _on_gameState_change(_level, state):
 	if state == StateManager.LIVING.FISH_FED:
+		print("jep")
 		enable()

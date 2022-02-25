@@ -66,6 +66,7 @@ func change_state(new_state):
 	notify()
 	if(current_level==LEVELS.GARAGE && new_state==GARAGE.END):
 		current_state=LIVING.INIT
+		print("willy")
 		change_level("Living")
 		current_level = LEVELS.LIVING
 	elif(current_level==LEVELS.LIVING && new_state==LIVING.END):
