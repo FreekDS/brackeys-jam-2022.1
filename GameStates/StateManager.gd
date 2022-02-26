@@ -17,7 +17,8 @@ enum LEVELS {
 	GARAGE ,
 	LIVING,
 	BATHROOM,
-	KITCHEN
+	KITCHEN,
+	FINALE
 }
 
 
@@ -85,12 +86,14 @@ func change_state(new_state):
 	notify()
 	if(current_level==LEVELS.GARAGE && new_state==GARAGE.END):
 		current_state=LIVING.INIT
-		print("willy")
 		change_level("Living")
 		current_level = LEVELS.LIVING
 	elif(current_level==LEVELS.LIVING && new_state==LIVING.END):
-		change_level("Kitchen")
-		
+		change_level("Bathroom")
+		current_level = LEVELS.BATHROOM
+	elif(current_level==LEVELS.BATHROOM && new_state==BATHROOM.END):
+		change_level("Finale")
+		current_level = LEVELS.FINALE
 
 
 func change_level(new_level):

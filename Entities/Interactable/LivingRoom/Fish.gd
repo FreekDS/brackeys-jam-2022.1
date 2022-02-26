@@ -45,7 +45,6 @@ func interact():
 			$AudioStreamPlayer2D2.playing = true
 			yield(get_tree().create_timer(4), "timeout")
 			emit_signal("action_end_level")
-			StateManager.change_state(StateManager.LIVING.END)
 		_: # default
 			emit_signal("action_message", round_robin_message(messages[StateManager.insanity_level]))
 	
