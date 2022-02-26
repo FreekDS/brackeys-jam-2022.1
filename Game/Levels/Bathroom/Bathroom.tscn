@@ -411,7 +411,6 @@ debug_draw = false
 [node name="Player" parent="Game" instance=ExtResource( 3 )]
 position = Vector2( -228, 380 )
 scale = Vector2( 1.733, 1.733 )
-neck_rotation = 20
 
 [node name="InteractablesFront" type="Node2D" parent="Game"]
 

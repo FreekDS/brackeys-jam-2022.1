@@ -14,12 +14,15 @@ func handle_level_changed(currentLevelName:String):
 	match currentLevelName:
 		"garage":
 			nextLevel=load("res://Game/Levels/Garage/Garage.tscn").instance()
+			StateManager.current_level = StateManager.LEVELS.GARAGE
 			currentLevelEnum=StateManager.LEVELS.GARAGE
 		"Living":
 			nextLevel=load("res://Game/Levels/LivingRoom/LivingRoom.tscn").instance()
+			StateManager.current_level = StateManager.LEVELS.LIVING
 			currentLevelEnum=StateManager.LEVELS.LIVING
 		"Bathroom":
 			nextLevel=load("res://Game/Levels/Bathroom/Bathroom.tscn").instance()
+			StateManager.current_level = StateManager.LEVELS.BATHROOM
 			currentLevelEnum=StateManager.LEVELS.BATHROOM
 		"Finale":
 			nextLevel=load("res://Game/Levels/Finale/FInale.tscn").instance()
