@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://UI/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Levels/Bathroom/Art/BR_BG.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Entities/Interactable/Bathroom/Hairdryer.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Entities/Interactable/Bathroom/Shampoooo.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Game/Levels/Bathroom/GameBathroom.gd" type="Script" id=22]
+[ext_resource path="res://Entities/Interactable/Garage/Lamp.tscn" type="PackedScene" id=23]
 
 [sub_resource type="ParticlesMaterial" id=3]
 emission_shape = 1
@@ -204,6 +205,11 @@ tracks/5/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="Environment" id=4]
+background_mode = 4
+glow_enabled = true
+glow_bicubic_upscale = true
+
 [node name="Bathroom" type="Node"]
 
 [node name="Background" parent="." instance=ExtResource( 1 )]
@@ -354,6 +360,27 @@ root_node = NodePath("../..")
 autoplay = "RESET"
 anims/LevelEnd = SubResource( 1 )
 anims/RESET = SubResource( 2 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.541176, 0.541176, 0.541176, 1 )
+
+[node name="Lamp" parent="." instance=ExtResource( 23 )]
+modulate = Color( 5, 5, 1, 1 )
+position = Vector2( -109, 61 )
+scale = Vector2( 6.5, 6.5 )
+
+[node name="Lamp2" parent="." instance=ExtResource( 23 )]
+modulate = Color( 5, 5, 1, 1 )
+position = Vector2( 151, 34 )
+scale = Vector2( 6.5, 6.5 )
+
+[node name="Lamp3" parent="." instance=ExtResource( 23 )]
+modulate = Color( 5, 5, 1, 1 )
+position = Vector2( 509, 62 )
+scale = Vector2( 6.5, 6.5 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
 
 [connection signal="action_end_level" from="Game/InteractablesFront/Bathtub" to="Game" method="_on_Bathtub_action_end_level"]
 [connection signal="finished" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_finished"]
