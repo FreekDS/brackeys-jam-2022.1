@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/563765__florianreichelt__fire-auto-car-on-fire.mp3-0ba134079f3a859980452ba595162e86.mp3str"
+
+[deps]
+
+source_file="res://SFX/563765__florianreichelt__fire-auto-car-on-fire.mp3"
+dest_files=[ "res://.import/563765__florianreichelt__fire-auto-car-on-fire.mp3-0ba134079f3a859980452ba595162e86.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

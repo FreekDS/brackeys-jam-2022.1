@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Game/Levels/Finale/Fire1.png" type="Texture" id=1]
 [ext_resource path="res://Game/Levels/Finale/huizeken.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://UI/dynamic_font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Game/distortion2.gdshader" type="Shader" id=5]
 [ext_resource path="res://Game/Levels/Finale/FInale.gd" type="Script" id=6]
+[ext_resource path="res://SFX/563765__florianreichelt__fire-auto-car-on-fire.mp3" type="AudioStream" id=7]
 
 [sub_resource type="Environment" id=3]
 background_mode = 4
@@ -67,6 +68,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -920, 65 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -128,3 +132,8 @@ margin_bottom = 51.0
 rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "esc to exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -20.0
+autoplay = true
