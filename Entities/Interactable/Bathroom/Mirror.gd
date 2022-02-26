@@ -39,6 +39,16 @@ func interact():
 			Text.set_content("Seriously,\nBrush your teeth man!")
 			Text.play_text()
 			yield(Text, "completed")
+		
+		StateManager.BATHROOM.HAIR_DRYER_TAKEN:
+			Text.set_content("IT COMES CLOSER, IT IS REAL")
+			Text.play_text()
+			yield(Text, "completed")
+			StateManager.insanity_level = StateManager.INSANITY.WILL_HURT
+			emit_signal("action_insanity", "IT IS REAL, IT WILL HURT YOU")
+			yield(get_tree().create_timer(4), "timeout")
+			StateManager.change_state(StateManager.BATHROOM.MIRROR_INTERACTED_2)
+		
 		_:	# default
 			var t = mirror_talks[randi() % mirror_talks.size()]
 			Text.set_content("[center]"+ t + "[/center]")

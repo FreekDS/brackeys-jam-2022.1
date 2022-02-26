@@ -5,7 +5,7 @@ signal transitioned_to(level, state)
 signal level_changed(level)
 
 func _ready():
-	current_level = LEVELS.LIVING
+	current_level = LEVELS.BATHROOM
 	current_state = LIVING.INIT
 
 
@@ -60,7 +60,7 @@ enum BATHROOM {
 	INIT,
 	MIRROR_INTERACTED,	# It cannot hurt
 	COLLECT_TOWELS,
-	TOWELS_DEPOSITED,
+	TOWELS_DEPOSITED,	# It might be real
 	TOOTHPASTE_TAKEN,
 	BRUSH_TAKEN,
 	TEETH_BRUSHED,
@@ -68,6 +68,7 @@ enum BATHROOM {
 	SOAP_TAKEN,
 	DRESSER_OPENED,
 	HAIR_DRYER_TAKEN,
+	MIRROR_INTERACTED_2,
 	CAT_EQUIPPED,
 	BATH_FILLED,
 	END

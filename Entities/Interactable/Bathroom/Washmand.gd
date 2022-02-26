@@ -22,6 +22,10 @@ func interact():
 		StateManager.BATHROOM.COLLECT_TOWELS:
 			if StateManager.state_meta.has('towel1') and StateManager.state_meta.has('towel2'):
 				specific_message("I found them all!")
+				yield(get_tree().create_timer(2), "timeout")
+				StateManager.insanity_level = StateManager.INSANITY.MIGHT_HURT
+				emit_signal("action_insanity", "It MIGHT be REAL, what if it hurts?")
+				yield(get_tree().create_timer(4), "timeout")
 				StateManager.change_state(StateManager.BATHROOM.TOWELS_DEPOSITED)
 				complete()
 				return
