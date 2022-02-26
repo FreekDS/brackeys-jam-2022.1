@@ -90,6 +90,7 @@ position = Vector2( 516, 291 )
 scale = Vector2( 15, 15 )
 frames = SubResource( 2 )
 animation = "Burn"
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -25,7 +25,8 @@ func flip(value):
 	HeadSprites.flip_h = value
 	
 func set_neck_rotation(rotation_deg):
-	Neck.rotation_degrees = rotation_deg
+	if Neck:
+		Neck.rotation_degrees = rotation_deg
 	
 
 func get_input():

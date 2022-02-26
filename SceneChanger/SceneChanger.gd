@@ -27,7 +27,7 @@ func handle_level_changed(currentLevelName:String):
 			print("unknown level")
 			return
 	add_child(nextLevel)
-	nextLevel.connect("scene_changed",self,"handle_scene_changed")
+#	nextLevel.connect("scene_changed",self,"handle_scene_changed")
 	currentLevel.queue_free()
 	currentLevel=nextLevel
 	
@@ -54,7 +54,7 @@ func handle_scene_changed(currentLevelName:String):
 			print("unknown scene")
 			return
 	add_child(nextLevel)
-	nextLevel.connect("scene_changed",self,"handle_scene_changed")
+#	nextLevel.connect("scene_changed",self,"handle_scene_changed")
 	currentLevel.queue_free()
 	currentLevel=nextLevel
 	

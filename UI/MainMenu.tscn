@@ -232,9 +232,6 @@ custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
 expand_icon = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tween" type="Tween" parent="."]
 

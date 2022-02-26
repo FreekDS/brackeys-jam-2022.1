@@ -24,8 +24,12 @@ onready var current_state = PLAYSTATE.MENU
 
 
 func stop_all():
+	var at = 0
 	for c in get_children():
-		c.stop()
+		if c.playing:
+			c.stop()
+			at = MainTheme.get_playback_position()
+	return at
 		
 
 func correct_level_music_playing():
@@ -33,24 +37,24 @@ func correct_level_music_playing():
 		return
 	return LevelThemes[StateManager.insanity_level].playing
 
-func play_correct_level_music():
+func play_correct_level_music(at):
 	if LevelThemes[StateManager.insanity_level]:
-		LevelThemes[StateManager.insanity_level].play()
+		LevelThemes[StateManager.insanity_level].play(at)
 
 
 func _process(delta):
 	match current_state:
 		PLAYSTATE.MENU:
 			if not MainTheme.playing:
-				stop_all()
-				MainTheme.play()
+				var at = stop_all()
+				MainTheme.play(at)
 		PLAYSTATE.LEVELS:
 			if not correct_level_music_playing():
-				stop_all()
-				play_correct_level_music()
+				var at = stop_all()
+				play_correct_level_music(at)
 		PLAYSTATE.END:
 			if not EndTheme.playing:
-				stop_all()
-				EndTheme.play()
+				var at = stop_all()
+				EndTheme.play(at)
 
 

@@ -15,6 +15,8 @@ func _on_PlayButton_pressed():
 		PlayButton.disabled = true
 		CreditsButton.disabled = true
 		self.visible = false
+		StateManager.current_level = StateManager.LEVELS.GARAGE
+		StateManager.current_state = StateManager.GARAGE.INIT
 		var _n = get_tree().change_scene_to(gameScene)
 		SfxManager.current_state = SfxManager.PLAYSTATE.LEVELS
 		queue_free()
