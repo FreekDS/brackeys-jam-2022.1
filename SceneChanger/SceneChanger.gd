@@ -7,6 +7,7 @@ onready var currentLevelEnum=StateManager.LEVELS.GARAGE
 func _ready():
 	stateManager.connect("level_changed",self,"handle_level_changed")
 	currentLevel.connect("scene_changed",self,"handle_scene_changed")
+	StateManager.notify()
 	
 func handle_level_changed(currentLevelName:String):
 	var nextLevel
@@ -17,9 +18,9 @@ func handle_level_changed(currentLevelName:String):
 		"Living":
 			nextLevel=load("res://Game/Levels/LivingRoom/LivingRoom.tscn").instance()
 			currentLevelEnum=StateManager.LEVELS.LIVING
-		"kitchen":
-			nextLevel=load("res://Game/Levels/Kitchen/Kitchen.tscn").instance()
-			currentLevelEnum=StateManager.LEVELS.KITCHEN
+		"Bathroom":
+			nextLevel=load("res://Game/Levels/Bathroom/Bathroom.tscn").instance()
+			currentLevelEnum=StateManager.LEVELS.BATHROOM
 		_:
 			print("unknown level")
 			return

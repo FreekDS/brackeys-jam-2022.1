@@ -43,7 +43,6 @@ func interact():
 			yield(get_tree().create_timer(4), "timeout")
 			emit_signal("action_end_level")
 			StateManager.change_state(StateManager.LIVING.END)
-			print("Level end")
 		_: # default
 			emit_signal("action_message", round_robin_message(messages[StateManager.insanity_level]))
 	

@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://UI/double_pixel-7.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=3]
-[ext_resource path="res://Game/Levels/Garage/Garage.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SceneChanger/SceneChanger.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/textures/space.png" type="Texture" id=5]
 [ext_resource path="res://UI/textures/left_right.png" type="Texture" id=6]
 [ext_resource path="res://UI/textures/e_mouseleft.png" type="Texture" id=7]
 [ext_resource path="res://UI/textures/back.png" type="Texture" id=8]
+[ext_resource path="res://UI/dynamic_font.tres" type="DynamicFont" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -49,9 +50,6 @@ margin_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 gameScene = ExtResource( 4 )
 
 [node name="Menu" type="Control" parent="."]
@@ -195,28 +193,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2000.0
 margin_right = 2000.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CenterContainer" type="CenterContainer" parent="Credits"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Credits/CenterContainer"]
 margin_left = 312.0
-margin_top = 262.0
+margin_top = 54.0
 margin_right = 712.0
-margin_bottom = 337.0
+margin_bottom = 546.0
 rect_min_size = Vector2( 400, 0 )
-text = "Stein Maerivoet: Graphics Lead, Game Design
+custom_fonts/normal_font = ExtResource( 9 )
+text = "Stein Maerivoet: 
+  Graphics Lead
+  Game Design
+  Sound Design
 
-Den Troturerf: Door architect, Game Design
+Thibaut van Goethem
+  Programming aid
 
-Freek De Sagher: Lead programming, Game Design"
+Freek De Sagher:
+  Lead programming
+  Game Design
+  Graphics aid"
 fit_content_height = true
 scroll_active = false
 

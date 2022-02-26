@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://SFX/maintheme.wav" type="AudioStream" id=1]
+[ext_resource path="res://SFX/SFXManager.gd" type="Script" id=2]
+[ext_resource path="res://SFX/itsover.wav" type="AudioStream" id=3]
+
+[node name="SFXManager" type="Node"]
+script = ExtResource( 2 )
+
+[node name="MainTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+stream_paused = true
+bus = "MusicBus"
+
+[node name="ItsOverTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "MusicBus"
