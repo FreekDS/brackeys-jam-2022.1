@@ -17,7 +17,7 @@ func interact():
 	if not enabled or not can_be_clicked:
 		return
 		
-	specific_message("One more thing to collect >:)")
+	specific_message("Let me get my trusty hairdryer :)")
 	visible = false
 	yield(get_tree().create_timer(1), "timeout")
 	StateManager.change_state(StateManager.BATHROOM.HAIR_DRYER_TAKEN)

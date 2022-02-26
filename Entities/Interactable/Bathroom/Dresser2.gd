@@ -14,7 +14,7 @@ func interact():
 	if not enabled or not can_be_clicked:
 		return
 		
-	specific_message("Whats in here?")
+	specific_message("I keep my hairdryer and hairbrush in here")
 	yield(get_tree().create_timer(1), "timeout")
 	StateManager.change_state(StateManager.BATHROOM.DRESSER_OPENED)
 	complete()
