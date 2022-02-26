@@ -6,7 +6,7 @@ onready var currentLevelEnum=StateManager.LEVELS.GARAGE
 
 func _ready():
 	stateManager.connect("level_changed",self,"handle_level_changed")
-	currentLevel.connect("scene_changed",self,"handle_scene_changed")
+#	currentLevel.connect("scene_changed",self,"handle_scene_changed")
 	StateManager.notify()
 	
 func handle_level_changed(currentLevelName:String):

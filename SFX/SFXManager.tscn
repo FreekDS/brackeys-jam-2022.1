@@ -5,12 +5,11 @@
 [ext_resource path="res://SFX/itsover.wav" type="AudioStream" id=3]
 
 [node name="SFXManager" type="Node"]
+pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="MainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-autoplay = true
-stream_paused = true
 bus = "MusicBus"
 
 [node name="ItsOverTheme" type="AudioStreamPlayer" parent="."]
