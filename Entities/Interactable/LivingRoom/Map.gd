@@ -13,13 +13,16 @@ onready var map_node = $Sprite
 
 func _ready():
 	enable_on = [
-		StateManager.LIVING.MAP_CHECKED
+		StateManager.LIVING.BOX_INTERACTED
 	]
 	disable_on = [
 		
 	]
 	RollAnimation.interpolate_property(
 		map_node, "scale:y", map_node.scale.y, 0.2, 0.2
+	)
+	RollAnimation.interpolate_property(
+		map_node, "position:y", map_node.position.y, map_node.position.y - 18, 0.2
 	)
 
 

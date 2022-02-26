@@ -13,7 +13,7 @@ var time_passed = 0
 
 func _ready():
 	enable_on = [
-		StateManager.BATHROOM.HAIR_DRYER_TAKEN
+		StateManager.BATHROOM.CAT_EQUIPPED
 	]
 	disable_on = [
 		StateManager.BATHROOM.END

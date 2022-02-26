@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://UI/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=2]
@@ -22,6 +22,11 @@
 [ext_resource path="res://Entities/Interactable/LivingRoom/Lamp.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Game/Levels/LivingRoom/Art/LR_BG.png" type="Texture" id=22]
 [ext_resource path="res://Game/InteractablesManager.gd" type="Script" id=23]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_bicubic_upscale = true
 
 [node name="LivingRoom" type="Node"]
 
@@ -68,6 +73,7 @@ scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
 [node name="Fish" parent="Game/InteractablesBack" instance=ExtResource( 9 )]
+modulate = Color( 1.5, 1.5, 2, 1 )
 position = Vector2( -83, 191 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
@@ -154,6 +160,12 @@ polygon = PoolVector2Array( -8.84, -7.11429, -8.8, 8.57143, 10, 8.57143, 10.03, 
 
 [node name="InsanityStateDisplay" parent="Game/InsanityLayer" instance=ExtResource( 3 )]
 visible = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.686275, 0.686275, 0.686275, 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
 
 [connection signal="finished" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_finished"]
 [connection signal="playing" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_playing"]

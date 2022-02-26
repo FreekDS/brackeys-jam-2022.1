@@ -26,9 +26,6 @@ percent_visible = 0.0
 text = "bottom text"
 scroll_active = false
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 text_content = "bottom text"
 play = true
 time_per_letter = 0.02

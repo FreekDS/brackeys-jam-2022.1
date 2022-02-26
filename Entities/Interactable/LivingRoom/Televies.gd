@@ -17,6 +17,7 @@ func _ready():
 	disable_on = [
 
 	]
+	modulate = Color(2,2,2)
 
 
 func interact():
@@ -46,6 +47,7 @@ func interact():
 func turn_off():
 	TVAnimations.play("turn_off")
 	active = false
+	modulate = Color(1,1,1)
 	
 func turn_on():
 	if StateManager.current_state >= StateManager.LIVING.PLANT_WATERED:
@@ -53,6 +55,7 @@ func turn_on():
 		AhDeRikSe.visible = true
 	TVAnimations.play("turn_on")
 	active = true
+	modulate = Color(2,2,2)
 		
 func _on_gameState_change(_level, state):
 	._on_gameState_change(_level, state)

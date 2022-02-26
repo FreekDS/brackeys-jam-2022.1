@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://UI/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Levels/Bathroom/Art/BR_BG.png" type="Texture" id=2]
@@ -23,6 +23,9 @@
 [ext_resource path="res://Entities/Interactable/Bathroom/Shampoooo.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Game/Levels/Bathroom/GameBathroom.gd" type="Script" id=22]
 [ext_resource path="res://Entities/Interactable/Garage/Lamp.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Entities/Willi/Willi.tscn" type="PackedScene" id=24]
+[ext_resource path="res://UI/dynamic_font.tres" type="DynamicFont" id=25]
+[ext_resource path="res://Entities/Willi/poezeken_base.png" type="Texture" id=26]
 
 [sub_resource type="ParticlesMaterial" id=3]
 emission_shape = 1
@@ -40,9 +43,12 @@ damping = 10.0
 scale = 3.0
 color = Color( 0.223529, 0.266667, 0.545098, 1 )
 
+[sub_resource type="CanvasItemMaterial" id=5]
+light_mode = 1
+
 [sub_resource type="Animation" id=1]
 resource_name = "LevelEnd"
-length = 4.0
+length = 14.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Game/Player:position")
 tracks/0/interp = 1
@@ -74,10 +80,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 2.8, 3.8 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 7.5, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -254, 331 ), Vector2( -247, 489 ) ]
+"values": [ Vector2( -254, 331 ), Vector2( -254, 331 ), Vector2( -247, 489 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Game/AnimationProps/Hairdryer:visible")
@@ -86,10 +92,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 2.8 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 6.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false, true ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Game/AnimationProps/Splash:emitting")
@@ -98,10 +104,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 3.8 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 3.9, 7.8 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ true, true ]
 }
 tracks/5/type = "method"
 tracks/5/path = NodePath("Game/Player")
@@ -124,10 +130,46 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 2.6, 2.8, 3.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 2, 2.3, 3.5, 4, 4.8, 6.4, 6.7, 7.4, 7.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0, 0, 20, -20 ]
+"values": [ 0, 0, 20, 20, -20, 0, 0, 20, 20, -20 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Game/AnimationProps/Willi:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Game/AnimationProps/Meow\?:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2.5, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Game/AnimationProps/Willi:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -255, 303 ), Vector2( -255, 303 ), Vector2( -245, 469 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -203,6 +245,42 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Game/AnimationProps/Willi:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Game/AnimationProps/Meow\?:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Game/AnimationProps/Willi:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -255, 303 ) ]
 }
 
 [sub_resource type="Environment" id=4]
@@ -309,19 +387,24 @@ debug_draw = false
 [node name="Player" parent="Game" instance=ExtResource( 3 )]
 position = Vector2( -228, 380 )
 scale = Vector2( 1.733, 1.733 )
+neck_rotation = 1
 
 [node name="InteractablesFront" type="Node2D" parent="Game"]
 
 [node name="Bathtub" parent="Game/InteractablesFront" instance=ExtResource( 10 )]
-position = Vector2( -245, 486 )
+position = Vector2( -245, 489 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 detection_radius = 270
 
 [node name="Shampoooo" parent="Game/InteractablesFront" instance=ExtResource( 21 )]
-position = Vector2( -121, 427 )
+position = Vector2( -121, 431 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
+
+[node name="Willi" parent="Game/InteractablesFront" instance=ExtResource( 24 )]
+position = Vector2( 536, 484 )
+scale = Vector2( 5, 5 )
 
 [node name="Ground" type="StaticBody2D" parent="Game"]
 
@@ -344,6 +427,13 @@ position = Vector2( -254, 331 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
+[node name="Willi" type="Sprite" parent="Game/AnimationProps"]
+visible = false
+position = Vector2( -255, 303 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+hframes = 5
+
 [node name="Splash" type="Particles2D" parent="Game/AnimationProps"]
 position = Vector2( -245, 422 )
 z_index = 3
@@ -354,6 +444,17 @@ one_shot = true
 speed_scale = 5.0
 explosiveness = 0.2
 process_material = SubResource( 3 )
+
+[node name="Meow\?" type="RichTextLabel" parent="Game/AnimationProps"]
+visible = false
+material = SubResource( 5 )
+margin_left = -298.0
+margin_top = 260.0
+margin_right = -107.0
+margin_bottom = 320.0
+custom_fonts/normal_font = ExtResource( 25 )
+visible_characters = 5
+text = "Meow?"
 
 [node name="LevelAnimations" type="AnimationPlayer" parent="Game"]
 root_node = NodePath("../..")
