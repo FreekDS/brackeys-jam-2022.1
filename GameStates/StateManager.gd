@@ -5,8 +5,8 @@ signal transitioned_to(level, state)
 signal level_changed(level)
 
 func _ready():
-	current_level = LEVELS.BATHROOM
-	current_state = BATHROOM.INIT
+	current_level = LEVELS.LIVING
+	current_state = LIVING.INIT
 
 
 func notify():
@@ -95,6 +95,7 @@ func change_state(new_state):
 func change_level(new_level):
 	
 	insanity_level=INSANITY.CANNOT_HURT
+	current_state = 0 	# Zero is always init state
 	
 	#This signal will be picked up in de SceneChanger
 	emit_signal("level_changed", new_level)

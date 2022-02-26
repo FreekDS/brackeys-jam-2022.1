@@ -10,7 +10,8 @@ var messages = {
 
 func _ready():
 	enable_on = [
-		StateManager.GARAGE.PICKED_UP_PHONE
+		StateManager.GARAGE.PICKED_UP_PHONE,
+		StateManager.GARAGE.DRILL_ACQUIRED
 	]
 	disable_on = []
 

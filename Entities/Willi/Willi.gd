@@ -29,7 +29,7 @@ func interact():
 	if StateManager.current_state == StateManager.BATHROOM.HAIR_DRYER_TAKEN:
 		specific_message("You will never hurt me anymore, ANIMAL")
 		visible = false
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(2), "timeout")
 		specific_message("Time to take a bath")
 		complete()
 		StateManager.change_state(StateManager.BATHROOM.CAT_EQUIPPED)

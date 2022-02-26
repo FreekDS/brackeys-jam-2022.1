@@ -48,7 +48,7 @@ light_mode = 1
 
 [sub_resource type="Animation" id=1]
 resource_name = "LevelEnd"
-length = 14.0
+length = 12.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Game/Player:position")
 tracks/0/interp = 1
@@ -387,7 +387,6 @@ debug_draw = false
 [node name="Player" parent="Game" instance=ExtResource( 3 )]
 position = Vector2( -228, 380 )
 scale = Vector2( 1.733, 1.733 )
-neck_rotation = 1
 
 [node name="InteractablesFront" type="Node2D" parent="Game"]
 
