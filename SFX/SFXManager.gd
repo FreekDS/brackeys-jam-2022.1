@@ -11,30 +11,16 @@ enum PLAYSTATE {
 onready var MainTheme = $MainTheme
 onready var EndTheme = $ItsOverTheme
 
+
 onready var LevelThemes = {
-	StateManager.INSANITY.CANNOT_HURT: null,
-	StateManager.INSANITY.MIGHT_HURT: null,
-	StateManager.INSANITY.WILL_HURT: null,
+	StateManager.INSANITY.CANNOT_HURT: $Insane0,
+	StateManager.INSANITY.MIGHT_HURT: $Insane1,
+	StateManager.INSANITY.WILL_HURT: $Insane2,
 	StateManager.INSANITY.HURT: null
 }
 
+
 onready var current_state = PLAYSTATE.MENU
-
-func _ready():
-	StateManager.connect("transitioned_to", self, "state_change")
-	StateManager.connect("level_changed", self, "on_level_change")
-
-
-func state_change(_level, state):
-	if StateManager.insanity_level in [StateManager.INSANITY.WILL_HURT, StateManager.INSANITY.HURT]:
-		if not distorted:
-			$MainTheme.stop()
-			$ItsOverTheme.play()
-		distorted = true
-	elif distorted and not $ItsOverTheme.playing:
-		$MainTheme.play()
-		$ItsOverTheme.stop()
-		distorted = false
 
 
 func stop_all():
@@ -43,7 +29,9 @@ func stop_all():
 		
 
 func correct_level_music_playing():
-	return LevelThemes[StateManager.insanity_level].playing()
+	if not LevelThemes[StateManager.insanity_level]:
+		return
+	return LevelThemes[StateManager.insanity_level].playing
 
 func play_correct_level_music():
 	if LevelThemes[StateManager.insanity_level]:

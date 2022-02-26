@@ -16,7 +16,9 @@ func _on_PlayButton_pressed():
 		CreditsButton.disabled = true
 		self.visible = false
 		var _n = get_tree().change_scene_to(gameScene)
+		SfxManager.current_state = SfxManager.PLAYSTATE.LEVELS
 		queue_free()
+		
 
 
 func _on_CreditsButton_pressed():
