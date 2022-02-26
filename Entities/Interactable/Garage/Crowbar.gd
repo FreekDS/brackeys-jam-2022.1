@@ -10,7 +10,7 @@ func _ready():
 func interact():
 	if not enabled or not can_be_clicked:
 		return
-	specific_message("I will make good use out of this")
+	specific_message("I will make good use out of this, its time has come")
 	visible = false
 	yield(get_tree().create_timer(3), "timeout")
 	StateManager.state_meta['items'] = ['crowbar']

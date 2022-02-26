@@ -8,8 +8,10 @@ var messages = {
 		"Only on doctors presciption it says",
 		"I better not take those..."
 	],
-	1: [""],
-	2: [""]
+	1: ["Whose medicine is this?"
+	],
+	2: ["Its probably willis meds"
+	]
 }
 
 func _ready():

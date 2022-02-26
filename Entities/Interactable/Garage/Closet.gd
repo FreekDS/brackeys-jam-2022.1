@@ -3,9 +3,9 @@ extends Interactable
 var keep_disabled = false
 
 var messages = {
-	0: ["It is locked"],
-	1: ["It is locked"],
-	2: ["It is locked"]
+	0: ["It is locked, not a key in sight"],
+	1: ["It is locked, not a key in sight"],
+	2: ["It is locked, a drill in sight"]
 }
 
 func _ready():

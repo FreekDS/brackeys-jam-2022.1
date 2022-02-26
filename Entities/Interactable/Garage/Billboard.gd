@@ -2,9 +2,9 @@ tool
 extends Interactable
 
 var messages = {
-	0: ["A bulletin board!"],
+	0: ["A bulletin board."],
 	1: ["A bulletin board!"],
-	2: ["A bulletin board!"]
+	2: ["A bulletin board?"]
 }
 
 func _ready():

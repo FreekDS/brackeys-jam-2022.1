@@ -89,8 +89,5 @@ anims/RESET = SubResource( 7 )
 "anims/mouse enter" = SubResource( 8 )
 "anims/mouse exit" = SubResource( 9 )
 
-[node name="Area2D" parent="." index="2"]
-visible = false
-
 [node name="CollisionPolygon2D" parent="Area2D" index="0"]
 shape = SubResource( 6 )

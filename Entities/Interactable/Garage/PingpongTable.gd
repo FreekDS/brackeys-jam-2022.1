@@ -2,8 +2,8 @@ extends Interactable
 
 var messages = {
 	0: ["I used to play a lot of ping pong with my brother"],
-	1: ["I used to play a lot of ping pong with my brother"],
-	2: ["I used to play a lot of ping pong with my brother"],
+	1: ["Nowadays I just play against myself"],
+	2: ["Gathering dust..."],
 }
 
 func _ready():

@@ -8,7 +8,9 @@ var messages = {
 		"It is just a fuse box\nIt has no feelings",
 		"Or has it?"
 	],
-	2: [""]
+	2: ["Why do you do this to me?",
+		"You bring this upon yourself"
+	]
 }
 
 func _ready():
