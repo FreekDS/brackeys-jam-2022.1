@@ -11,7 +11,6 @@ func _ready():
 		StateManager.BATHROOM.MIRROR_INTERACTED
 	]
 	disable_on = [
-		StateManager.BATHROOM.TOWEL_2,
 		StateManager.BATHROOM.TOWELS_DEPOSITED
 	]
 
@@ -29,13 +28,12 @@ func interact():
 		return
 		
 	match StateManager.current_state:
-		StateManager.BATHROOM.MIRROR_INTERACTED:
+		StateManager.BATHROOM.MIRROR_INTERACTED, StateManager.BATHROOM.COLLECT_TOWELS:
 			take_towel()
-			StateManager.change_state(StateManager.BATHROOM.TOWEL_1)
-		StateManager.BATHROOM.TOWEL_1:
-			take_towel()
-			StateManager.change_state(StateManager.BATHROOM.TOWEL_2)
-			
+			var prev_meta = StateManager.state_meta.duplicate()
+			StateManager.change_state(StateManager.BATHROOM.COLLECT_TOWELS)
+			StateManager.state_meta = prev_meta
+			StateManager.state_meta['towel1'] = true
 	
 	complete()
 	

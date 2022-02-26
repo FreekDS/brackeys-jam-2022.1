@@ -3,7 +3,8 @@ extends Interactable
 
 func _ready():
 	enable_on = [
-		StateManager.BATHROOM.SHOWER_OPENED
+		StateManager.BATHROOM.SHOWER_OPENED,
+		StateManager.BATHROOM.SOAP_TAKEN
 	]
 
 func interact():

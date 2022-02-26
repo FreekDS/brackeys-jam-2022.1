@@ -266,7 +266,7 @@ debug_draw = false
 
 [node name="LeSoap" parent="Game/InteractablesBack" instance=ExtResource( 18 )]
 visible = false
-position = Vector2( 1353, 466 )
+position = Vector2( 1337, 442 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
 
@@ -310,6 +310,7 @@ scale = Vector2( 1.733, 1.733 )
 position = Vector2( -245, 486 )
 scale = Vector2( 6.5, 6.5 )
 debug_draw = false
+detection_radius = 270
 
 [node name="Shampoooo" parent="Game/InteractablesFront" instance=ExtResource( 21 )]
 position = Vector2( -121, 427 )
