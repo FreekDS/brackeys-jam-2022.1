@@ -11,5 +11,5 @@ dest_files=[ "res://.import/animal_cat_purr.mp3-e21da3f220905bed5848a2181cc4cc43
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

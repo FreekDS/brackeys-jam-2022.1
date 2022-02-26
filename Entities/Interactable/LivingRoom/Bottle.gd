@@ -1,7 +1,9 @@
 extends Interactable
 
 var messages = {
-	0: [""],
+	0: ["An unopened water bottle",
+	"I dislike this brand"
+	],
 	1: [""],
 	2: [""]
 }
@@ -28,7 +30,7 @@ func interact():
 			yield(get_tree().create_timer(3), "timeout")
 			StateManager.change_state(StateManager.LIVING.BOTTLE_TAKEN)
 			complete()
-			self.visible = false
+			call_deferred("queue_free")
 		_: # default
 			emit_signal("action_message", round_robin_message(messages[StateManager.insanity_level]))
 			pass

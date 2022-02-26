@@ -6,6 +6,17 @@ onready var MySprite = $Sprite
 
 var towel_taken = false
 
+var messages = {
+	0: ["I use it to store towels",
+	"It can't be used for much more",
+	"It's to low for pull-ups"
+	],
+	1: ["I once tried standing on it",
+	"It broke"],
+	2: ["I would look better with candles on it"
+	]
+}
+
 func _ready():
 	enable_on = [
 		StateManager.BATHROOM.MIRROR_INTERACTED
@@ -34,6 +45,9 @@ func interact():
 			StateManager.change_state(StateManager.BATHROOM.COLLECT_TOWELS)
 			StateManager.state_meta = prev_meta
 			StateManager.state_meta['towel1'] = true
+	
+	if towel_taken:
+		send_round_robin(messages)
 	
 	complete()
 	

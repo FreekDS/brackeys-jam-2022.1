@@ -100,18 +100,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0, 17 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
 [sub_resource type="Animation" id=6]
 resource_name = "wash"
@@ -128,18 +116,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 18, 19, 20, 19, 20, 19, 20, 19, 20, 19, 21, 18 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AudioStreamPlayer2D2:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
 }
 
 [node name="Willi" instance=ExtResource( 1 )]

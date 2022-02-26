@@ -1,9 +1,9 @@
 extends Interactable
 
 var messages = {
-	0: [""],
-	1: [""],
-	2: [""]
+	0: ["Pizza time"],
+	1: ["Pizza time"],
+	2: ["Pizza time"]
 }
 
 func interact():

@@ -16,9 +16,11 @@ func _ready():
 func change_awake():
 	if sleeping:
 		WillyAnimations.play("wash")
+		$AudioStreamPlayer2D2.playing = true
 		sleeping = false
 	else:
 		WillyAnimations.play("sleep")
+		$AudioStreamPlayer2D.playing = true
 		sleeping = true
 
 

@@ -1,12 +1,11 @@
 extends Interactable
 
+
 var messages = {
-	0: ["This is my favourite dresser"
+	0: ["It's a brand new sink"
 	],
-	1: ["I can fit in this one!",
-	"Although I need to remove the shelves"],
-	2: ["I would rather be in here",
-	"It's my safe-space"
+	1: ["Let that sink in..."],
+	2: ["Sunk cost falacy?"
 	]
 }
 

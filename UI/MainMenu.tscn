@@ -177,7 +177,7 @@ __meta__ = {
 
 [node name="ExitButton" type="Button" parent="Menu/Buttons"]
 margin_left = 393.0
-margin_right = 500.0
+margin_right = 428.0
 margin_bottom = 70.0
 text = "Exit"
 
