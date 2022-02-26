@@ -38,7 +38,6 @@ func interact():
 		StateManager.insanity_level = StateManager.INSANITY.HURT
 		emit_signal("action_insanity", "IT HURT")
 		yield(get_tree().create_timer(4), "timeout")
-		StateManager.change_state(StateManager.BATHROOM.END)
 		emit_signal("action_end_level")
 		complete()
 		return

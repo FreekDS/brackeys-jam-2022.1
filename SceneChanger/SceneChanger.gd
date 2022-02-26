@@ -45,14 +45,10 @@ func handle_scene_changed(currentLevelName:String):
 			match currentLevelName:
 				_:
 					nextLevel=load("res://Game/Levels/LivingRoom/LivingRoom.tscn").instance()
-		StateManager.LEVELS.KITCHEN:
+		StateManager.LEVELS.BATHROOM:
 			match currentLevelName:
 				"scene1":
-					nextLevel=load("res://Game/Levels/Kitchen/Kitchen.tscn").instance()
-				"scene2":
-					nextLevel=load("res://Game/Levels/Kitchen/Kitchen_scene2.tscn").instance()
-				_:
-					nextLevel=load("res://Game/Levels/Kitchen/Kitchen.tscn").instance()
+					nextLevel=load("res://Game/Levels/Bathroom/Bathroom.tscn").instance()
 		_:
 			print("unknown scene")
 			return

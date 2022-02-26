@@ -197,9 +197,11 @@ func _on_mouse_over():
 	mouse_in = true
 
 # Remove outline if required
-func _on_mouse_exit(update=true):	
-	if mouse_in and detected:
+func _on_mouse_exit(update=true):
+	if mouse_in and detected and not is_paused and enabled:
 		play_anim(true)
+	if not mouse_in and detected and not enabled and  is_paused and not prev_enabled:
+		play_anim(true) 
 	if update:
 		mouse_in = false
 
@@ -279,7 +281,9 @@ func pause():
 func unpause():
 	if is_paused:
 		enabled = prev_enabled
+		_on_mouse_exit(false)
 		is_paused = false
-		if enabled and mouse_was_in and mouse_in:
+		if enabled and mouse_was_in and not mouse_in:
 			mouse_was_in = false
-			play_anim()
+		
+			
