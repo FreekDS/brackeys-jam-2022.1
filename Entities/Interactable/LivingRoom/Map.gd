@@ -33,6 +33,7 @@ func interact():
 	match StateManager.current_state:
 		StateManager.LIVING.BOX_INTERACTED:
 			RollAnimation.start()
+			$AudioStreamPlayer2D.playing = true
 		_: # default
 			emit_signal("action_message", round_robin_message(messages[StateManager.insanity_level]))
 			pass

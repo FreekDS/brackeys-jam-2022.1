@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/EatPizza.mp3-9064ed46115f188c5e72c2789a7762d5.mp3str"
+
+[deps]
+
+source_file="res://SFX/EatPizza.mp3"
+dest_files=[ "res://.import/EatPizza.mp3-9064ed46115f188c5e72c2789a7762d5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

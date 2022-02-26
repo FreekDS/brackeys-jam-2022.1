@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Drinkplant.mp3-3412c4faed28a2f118284ca33e78019e.mp3str"
+
+[deps]
+
+source_file="res://SFX/Drinkplant.mp3"
+dest_files=[ "res://.import/Drinkplant.mp3-3412c4faed28a2f118284ca33e78019e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

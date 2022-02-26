@@ -25,6 +25,7 @@ func interact():
 			deactivate()
 			Text.set_content("Remember: it is not real, \nit cannot hurt you!")
 			Text.play_text()
+			$AudioStreamPlayer2D.playing = false
 			yield(Text, "completed")
 			emit_signal("action_insanity", "It is not real, it cannot hurt you!")
 			yield(get_tree().create_timer(4.0), "timeout")
@@ -34,6 +35,7 @@ func interact():
 			if StateManager.state_meta.has('items'):
 				if StateManager.state_meta['items'].has('phone_number'):
 					specific_message("Let me enter the phone number...")
+					$AudioStreamPlayer2D2.playing = true
 					yield(get_tree().create_timer(3), "timeout")
 					activate(true)
 					_text_sequence([
@@ -46,6 +48,7 @@ func interact():
 					])
 					yield(self, "text_sequence_completed")
 					deactivate(true)
+					$AudioStreamPlayer2D3.playing = true
 					StateManager.insanity_level = StateManager.INSANITY.WILL_HURT
 					StateManager.current_state = StateManager.GARAGE.PHONE_DIALED
 					emit_signal("action_insanity", "IT IS REAL, IT WILL HURT YOU!")
@@ -89,5 +92,6 @@ func _on_gameState_change(level, state):
 		StateManager.LEVELS.GARAGE:
 			match state:
 				StateManager.GARAGE.INIT:
+					$AudioStreamPlayer2D.playing = true
 					Text.set_content("*ring ring*")
 					activate(true)

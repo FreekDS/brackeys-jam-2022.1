@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/animals_cat_meow_001.mp3-23ee197f2f6a27393d6bae1531765cad.mp3str"
+
+[deps]
+
+source_file="res://SFX/animals_cat_meow_001.mp3"
+dest_files=[ "res://.import/animals_cat_meow_001.mp3-23ee197f2f6a27393d6bae1531765cad.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

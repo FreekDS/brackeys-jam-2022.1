@@ -21,6 +21,7 @@ func interact():
 			yield(get_tree().create_timer(1), "timeout")
 		StateManager.BATHROOM.COLLECT_TOWELS:
 			if StateManager.state_meta.has('towel1') and StateManager.state_meta.has('towel2'):
+				$AudioStreamPlayer2D.playing = true
 				specific_message("I found them all!")
 				yield(get_tree().create_timer(2), "timeout")
 				StateManager.insanity_level = StateManager.INSANITY.MIGHT_HURT
@@ -42,6 +43,7 @@ func interact():
 
 	if towel_count >= 2:
 		specific_message("I found them all")
+		$AudioStreamPlayer2D.playing = true
 		StateManager.change_state(StateManager.BATHROOM.TOWELS_DEPOSITED)
 		disable()
 	

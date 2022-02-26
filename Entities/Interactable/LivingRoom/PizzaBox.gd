@@ -13,6 +13,7 @@ func interact():
 	match StateManager.current_state:
 		StateManager.LIVING.TV_INTERACTED:
 			emit_signal("action_message", "Oh a leftover slice!\n*eats it*")
+			$AudioStreamPlayer2D.playing = true
 			yield(get_tree().create_timer(3), "timeout")
 			emit_signal("action_message", "Now im thirsty...")
 			StateManager.change_state(StateManager.LIVING.THIRSTY)

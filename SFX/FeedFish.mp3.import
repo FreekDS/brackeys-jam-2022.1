@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/FeedFish.mp3-50b6d8ae35b5ceca76faf0d4244c45eb.mp3str"
+
+[deps]
+
+source_file="res://SFX/FeedFish.mp3"
+dest_files=[ "res://.import/FeedFish.mp3-50b6d8ae35b5ceca76faf0d4244c45eb.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

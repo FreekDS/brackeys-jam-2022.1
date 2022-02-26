@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/TurnONTV.mp3-40f784dd26b477499b7c612f60e3e715.mp3str"
+
+[deps]
+
+source_file="res://SFX/TurnONTV.mp3"
+dest_files=[ "res://.import/TurnONTV.mp3-40f784dd26b477499b7c612f60e3e715.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

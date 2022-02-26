@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Drill.mp3-6c2754f5397a6a249a3088d61cbc2b1a.mp3str"
+
+[deps]
+
+source_file="res://SFX/Drill.mp3"
+dest_files=[ "res://.import/Drill.mp3-6c2754f5397a6a249a3088d61cbc2b1a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

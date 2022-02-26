@@ -11,7 +11,7 @@ func interact():
 		return
 		
 	emit_signal("action_message", "*brushes teeth*")
+	$AudioStreamPlayer2D.playing = true
 	visible = false
 	StateManager.change_state(StateManager.BATHROOM.TEETH_BRUSHED)
-	call_deferred("queue_free")
 	complete()

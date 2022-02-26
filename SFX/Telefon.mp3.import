@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Telefon.mp3-48d2d749ea92bf811e2e28626a65c20c.mp3str"
+
+[deps]
+
+source_file="res://SFX/Telefon.mp3"
+dest_files=[ "res://.import/Telefon.mp3-48d2d749ea92bf811e2e28626a65c20c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

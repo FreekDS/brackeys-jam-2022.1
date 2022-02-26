@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] - 8 Bit Universe (128 kbps).mp3-3fc1b6771ef4596a9764934ee991fc49.mp3str"
+
+[deps]
+
+source_file="res://SFX/Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] - 8 Bit Universe (128 kbps).mp3"
+dest_files=[ "res://.import/Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] - 8 Bit Universe (128 kbps).mp3-3fc1b6771ef4596a9764934ee991fc49.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

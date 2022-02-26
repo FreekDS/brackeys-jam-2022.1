@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/MakeCall.mp3-2bb1ef23a81cd5b33545ec21572b8884.mp3str"
+
+[deps]
+
+source_file="res://SFX/MakeCall.mp3"
+dest_files=[ "res://.import/MakeCall.mp3-2bb1ef23a81cd5b33545ec21572b8884.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

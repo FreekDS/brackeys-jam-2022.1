@@ -27,6 +27,7 @@ func interact():
 	emit_signal("on_interact", "bathtub")
 	if time_passed == 0 and not filling:
 		specific_message("Let me fill this bath")
+		$AudioStreamPlayer2D.playing = true
 		fill_start = OS.get_unix_time()
 		filling = true
 		particles.emitting = true

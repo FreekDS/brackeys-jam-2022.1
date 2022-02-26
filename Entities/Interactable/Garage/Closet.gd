@@ -22,6 +22,7 @@ func interact():
 	match StateManager.current_state:
 		StateManager.GARAGE.DRILL_ACQUIRED:
 			specific_message("let me drill this closet open, quickly!")
+			$AudioStreamPlayer2D.playing = true
 			yield(get_tree().create_timer(3), "timeout")
 #			_on_mouse_exit()
 			disable()

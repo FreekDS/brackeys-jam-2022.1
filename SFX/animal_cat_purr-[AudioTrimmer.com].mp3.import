@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/animal_cat_purr-[AudioTrimmer.com].mp3-be746a38cb2ce827f5f574dc4c1a7d2b.mp3str"
+
+[deps]
+
+source_file="res://SFX/animal_cat_purr-[AudioTrimmer.com].mp3"
+dest_files=[ "res://.import/animal_cat_purr-[AudioTrimmer.com].mp3-be746a38cb2ce827f5f574dc4c1a7d2b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

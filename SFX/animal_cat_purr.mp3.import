@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/animal_cat_purr.mp3-e21da3f220905bed5848a2181cc4cc43.mp3str"
+
+[deps]
+
+source_file="res://SFX/animal_cat_purr.mp3"
+dest_files=[ "res://.import/animal_cat_purr.mp3-e21da3f220905bed5848a2181cc4cc43.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ElectricalCurretn.mp3-f68a7bf65c1e66e9078f85e6a0b229c5.mp3str"
+
+[deps]
+
+source_file="res://SFX/ElectricalCurretn.mp3"
+dest_files=[ "res://.import/ElectricalCurretn.mp3-f68a7bf65c1e66e9078f85e6a0b229c5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

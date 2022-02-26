@@ -19,6 +19,7 @@ func interact():
 		
 	match StateManager.current_state:
 		StateManager.BATHROOM.MIRROR_INTERACTED, StateManager.BATHROOM.COLLECT_TOWELS:
+			$AudioStreamPlayer2D.playing = true
 			take_towel()
 			var prev_meta = StateManager.state_meta.duplicate()
 			StateManager.change_state(StateManager.BATHROOM.COLLECT_TOWELS)

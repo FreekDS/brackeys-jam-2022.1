@@ -35,6 +35,7 @@ func interact():
 				StateManager.insanity_level = StateManager.INSANITY.HURT
 				emit_signal("action_insanity", "IT HURTS")
 				yield(get_tree().create_timer(3), "timeout")
+				$AudioStreamPlayer2D.playing = true
 				emit_signal("action_end_level")
 				return # No complete required
 		_:

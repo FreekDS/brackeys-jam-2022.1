@@ -24,6 +24,7 @@ func interact():
 		StateManager.LIVING.BOTTLE_TAKEN:
 			emit_signal("action_message", "Poor plant")
 			yield(get_tree().create_timer(3), "timeout")
+			$AudioStreamPlayer2D.playing = true
 			Text.play_text()
 			yield(Text, "completed")
 			yield(get_tree().create_timer(1), "timeout")

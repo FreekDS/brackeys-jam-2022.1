@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/BicycleBell.mp3-66ae25d1c65afca0ff73c9d37232a55a.mp3str"
+
+[deps]
+
+source_file="res://SFX/BicycleBell.mp3"
+dest_files=[ "res://.import/BicycleBell.mp3-66ae25d1c65afca0ff73c9d37232a55a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

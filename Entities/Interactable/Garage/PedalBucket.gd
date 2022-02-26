@@ -16,6 +16,7 @@ func interact():
 	if not enabled or not can_be_clicked:
 		return
 	
+	$AudioStreamPlayer2D.playing = true
 	match StateManager.current_state:
 		StateManager.GARAGE.PHONE_DIALED:
 			if opened:

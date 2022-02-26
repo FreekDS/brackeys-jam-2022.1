@@ -17,6 +17,7 @@ func interact():
 	match StateManager.current_state:
 		StateManager.GARAGE.PICKED_UP_PHONE:
 			if opened:
+				$AudioStreamPlayer2D.playing = true
 				specific_message("Monday 14th of February:\n[i]\"Shouldn't have done that.\"[/i]")
 				yield(get_tree().create_timer(4), "timeout")
 				StateManager.insanity_level = StateManager.INSANITY.MIGHT_HURT

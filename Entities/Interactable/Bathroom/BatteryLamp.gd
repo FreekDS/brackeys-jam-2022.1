@@ -19,6 +19,7 @@ func interact():
 	if not can_be_clicked or not enabled:
 		return
 	
+	$AudioStreamPlayer2D.playing = true
 	if on:
 		modulate = Color.white
 		on = false

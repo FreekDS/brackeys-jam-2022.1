@@ -21,13 +21,14 @@ func interact():
 	match StateManager.current_state:
 		StateManager.LIVING.THIRSTY:
 			emit_signal("action_message", "Water will help\n*gulp*")
+			$AudioStreamPlayer2D.playing = true
 			visible = false
 			yield(get_tree().create_timer(3), "timeout")
 			emit_signal("action_message", "The plant looks thirsty")
 			yield(get_tree().create_timer(3), "timeout")
 			StateManager.change_state(StateManager.LIVING.BOTTLE_TAKEN)
 			complete()
-			call_deferred("queue_free")
+			self.visible = false
 		_: # default
 			emit_signal("action_message", round_robin_message(messages[StateManager.insanity_level]))
 			pass

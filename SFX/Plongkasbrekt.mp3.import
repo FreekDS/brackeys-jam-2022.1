@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Plongkasbrekt.mp3-1a50946599378b152c73e43aaf9c51ee.mp3str"
+
+[deps]
+
+source_file="res://SFX/Plongkasbrekt.mp3"
+dest_files=[ "res://.import/Plongkasbrekt.mp3-1a50946599378b152c73e43aaf9c51ee.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

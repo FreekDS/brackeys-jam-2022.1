@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/WaterFill.mp3-2002b24e49d512c8475ee28ed06c5458.mp3str"
+
+[deps]
+
+source_file="res://SFX/WaterFill.mp3"
+dest_files=[ "res://.import/WaterFill.mp3-2002b24e49d512c8475ee28ed06c5458.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

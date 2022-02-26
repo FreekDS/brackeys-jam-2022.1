@@ -24,12 +24,14 @@ func interact():
 	match StateManager.current_state:
 		StateManager.LIVING.PLANT_WATERED:
 			emit_signal("action_message", "Here for you fish!")
+			$AudioStreamPlayer2D5.playing = true
 			yield(get_tree().create_timer(3), "timeout")
 			Text.play_text()
 			yield(Text, "completed")
 			StateManager.change_state(StateManager.LIVING.FISH_WATERED)
 		StateManager.LIVING.FOOD_TAKEN:
 			Text.set_content("*Nom*")
+			$AudioStreamPlayer2D.playing = true
 			Text.play_text()
 			yield(Text, "completed")
 			yield(get_tree().create_timer(0.5), "timeout")
@@ -40,6 +42,7 @@ func interact():
 			yield(get_tree().create_timer(2), "timeout")
 			StateManager.insanity_level = StateManager.INSANITY.HURT
 			emit_signal("action_insanity", "IT HURT")
+			$AudioStreamPlayer2D2.playing = true
 			yield(get_tree().create_timer(4), "timeout")
 			emit_signal("action_end_level")
 			StateManager.change_state(StateManager.LIVING.END)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://UI/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Levels/Bathroom/Art/BR_BG.png" type="Texture" id=2]
@@ -26,6 +26,9 @@
 [ext_resource path="res://Entities/Willi/Willi.tscn" type="PackedScene" id=24]
 [ext_resource path="res://UI/dynamic_font.tres" type="DynamicFont" id=25]
 [ext_resource path="res://Entities/Willi/poezeken_base.png" type="Texture" id=26]
+[ext_resource path="res://SFX/animals_cat_meow_002.mp3" type="AudioStream" id=27]
+[ext_resource path="res://SFX/ElectricalCurretn.mp3" type="AudioStream" id=28]
+[ext_resource path="res://SFX/WaterSplash.mp3" type="AudioStream" id=29]
 
 [sub_resource type="ParticlesMaterial" id=3]
 emission_shape = 1
@@ -183,6 +186,54 @@ tracks/10/keys = {
 "update": 0,
 "values": [ Color( 0.541176, 0.541176, 0.541176, 1 ), Color( 0.541176, 0.541176, 0.541176, 1 ), Color( 0, 0, 0, 1 ) ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("AudioStreamPlayer2D:autoplay")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 2.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("AudioStreamPlayer2D3:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 4, 8.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("AudioStreamPlayer2D2:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 9.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -305,6 +356,54 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 0.541176, 0.541176, 0.541176, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("AudioStreamPlayer2D:autoplay")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("AudioStreamPlayer2D3:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("AudioStreamPlayer2D2:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 
 [sub_resource type="Environment" id=4]
@@ -505,6 +604,15 @@ scale = Vector2( 6.5, 6.5 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 27 )
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 28 )
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 29 )
 
 [connection signal="action_end_level" from="Game/InteractablesFront/Bathtub" to="Game" method="_on_Bathtub_action_end_level"]
 [connection signal="finished" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_finished"]

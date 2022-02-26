@@ -26,6 +26,7 @@ func interact():
 	if not enabled or not can_be_clicked:
 		return
 
+	
 	if StateManager.current_state == StateManager.BATHROOM.MIRROR_INTERACTED_2:
 		specific_message("You will never hurt me anymore, ANIMAL")
 		visible = false

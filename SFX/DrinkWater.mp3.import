@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/DrinkWater.mp3-ece4a6c350db935b62a323403dc71899.mp3str"
+
+[deps]
+
+source_file="res://SFX/DrinkWater.mp3"
+dest_files=[ "res://.import/DrinkWater.mp3-ece4a6c350db935b62a323403dc71899.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

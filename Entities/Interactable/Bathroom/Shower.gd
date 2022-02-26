@@ -22,7 +22,7 @@ func interact():
 		return
 	
 	emit_signal("on_interact", self.name)
-	
+	$AudioStreamPlayer2D.playing = true
 	if not opened:
 		ShowerAnimations.play("Open")
 		opened = true

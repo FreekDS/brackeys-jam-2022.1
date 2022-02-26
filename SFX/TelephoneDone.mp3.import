@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/TelephoneDone.mp3-e7dfbefe57f35dcfb2652fb25cadf3bd.mp3str"
+
+[deps]
+
+source_file="res://SFX/TelephoneDone.mp3"
+dest_files=[ "res://.import/TelephoneDone.mp3-e7dfbefe57f35dcfb2652fb25cadf3bd.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

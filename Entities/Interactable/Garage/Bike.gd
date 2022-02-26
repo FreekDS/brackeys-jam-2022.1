@@ -14,5 +14,6 @@ func _ready():
 
 func interact():
 	if can_be_clicked and enabled:
+		$AudioStreamPlayer2D.playing = true
 		specific_message(messages[0])
 		complete()

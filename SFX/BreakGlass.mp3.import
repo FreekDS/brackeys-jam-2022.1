@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/BreakGlass.mp3-ffd0847834045e40e7493f5328d15bf3.mp3str"
+
+[deps]
+
+source_file="res://SFX/BreakGlass.mp3"
+dest_files=[ "res://.import/BreakGlass.mp3-ffd0847834045e40e7493f5328d15bf3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
