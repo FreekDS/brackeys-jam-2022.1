@@ -295,7 +295,7 @@ shader_param/sprite = ExtResource( 24 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "LevelEnd"
-length = 3.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player:in_cutscene")
 tracks/0/interp = 1
@@ -417,6 +417,18 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../CanvasModulate:color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 2.99998, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.686275, 0.686275, 0.686275, 1 ), Color( 0.686275, 0.686275, 0.686275, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -552,6 +564,18 @@ tracks/10/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../CanvasModulate:color")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.686275, 0.686275, 0.686275, 1 ) ]
 }
 
 [sub_resource type="Environment" id=1]

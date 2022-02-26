@@ -25,7 +25,7 @@
 
 [sub_resource type="Animation" id=2]
 resource_name = "LevelEnd"
-length = 7.0
+length = 8.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Game/Player:in_cutscene")
 tracks/0/interp = 1
@@ -109,6 +109,18 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Color( 8.09, 5.81, 2.31, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CanvasModulate:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 6.6, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.231373, 0.231373, 0.231373, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
 [sub_resource type="Animation" id=3]

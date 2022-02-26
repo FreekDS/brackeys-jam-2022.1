@@ -21,6 +21,8 @@ func handle_level_changed(currentLevelName:String):
 		"Bathroom":
 			nextLevel=load("res://Game/Levels/Bathroom/Bathroom.tscn").instance()
 			currentLevelEnum=StateManager.LEVELS.BATHROOM
+		"Finale":
+			nextLevel=load("res://Game/Levels/Finale/FInale.tscn").instance()
 		_:
 			print("unknown level")
 			return

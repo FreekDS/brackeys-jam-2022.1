@@ -171,6 +171,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [ Vector2( -255, 303 ), Vector2( -255, 303 ), Vector2( -245, 469 ) ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("CanvasModulate:color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 9, 12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.541176, 0.541176, 0.541176, 1 ), Color( 0.541176, 0.541176, 0.541176, 1 ), Color( 0, 0, 0, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -282,6 +294,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector2( -255, 303 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("CanvasModulate:color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.541176, 0.541176, 0.541176, 1 ) ]
+}
 
 [sub_resource type="Environment" id=4]
 background_mode = 4
@@ -387,6 +411,7 @@ debug_draw = false
 [node name="Player" parent="Game" instance=ExtResource( 3 )]
 position = Vector2( -228, 380 )
 scale = Vector2( 1.733, 1.733 )
+neck_rotation = -20
 
 [node name="InteractablesFront" type="Node2D" parent="Game"]
 
