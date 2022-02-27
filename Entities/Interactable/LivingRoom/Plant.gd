@@ -2,8 +2,8 @@ extends Interactable
 
 var messages = {
 	0: [""],
-	1: [""],
-	2: [""]
+	1: ["It is Francois", "My favourite plant", "And only plant"],
+	2: ["It is Francois", "I hate him"]
 }
 
 onready var Text = $Text
@@ -35,6 +35,5 @@ func interact():
 			StateManager.change_state(StateManager.LIVING.PLANT_WATERED)
 		_: # default
 			emit_signal("action_message", round_robin_message(messages[StateManager.insanity_level]))
-			pass
 	
 	complete()

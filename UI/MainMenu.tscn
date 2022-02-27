@@ -239,8 +239,8 @@ margin_top = 50.0
 margin_bottom = 131.0
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[center]Shortcircuited[/center]"
-text = "Shortcircuited"
+bbcode_text = "[center]Short Circuited[/center]"
+text = "Short Circuited"
 fit_content_height = true
 
 [node name="Credits" type="Control" parent="."]

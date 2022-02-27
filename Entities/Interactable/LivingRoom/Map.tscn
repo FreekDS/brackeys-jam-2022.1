@@ -73,5 +73,6 @@ texture = ExtResource( 2 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="5"]
 stream = ExtResource( 4 )
+volume_db = -3.0
 
 [connection signal="tween_completed" from="RollTween" to="." method="_on_roll_complete"]
