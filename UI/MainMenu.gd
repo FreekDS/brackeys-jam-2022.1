@@ -35,6 +35,7 @@ func _on_CreditsButton_pressed():
 		0.2
 	)
 	MyTween.start()
+	$Homes.visible = false
 
 
 func _on_Back_pressed():
@@ -49,6 +50,7 @@ func _on_Back_pressed():
 		0.2
 	)
 	MyTween.start()
+	$Homes.visible = true
 
 
 func _on_ExitButton_pressed():

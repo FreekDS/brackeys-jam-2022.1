@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://UI/textures/ExitButton.png" type="Texture" id=1]
 [ext_resource path="res://UI/double_pixel-7.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://SceneChanger/SceneChanger.tscn" type="PackedScene" id=4]
@@ -9,6 +9,51 @@
 [ext_resource path="res://UI/textures/e_mouseleft.png" type="Texture" id=7]
 [ext_resource path="res://UI/textures/back.png" type="Texture" id=8]
 [ext_resource path="res://UI/dynamic_font.tres" type="DynamicFont" id=9]
+[ext_resource path="res://UI/textures/PlayButton.png" type="Texture" id=10]
+[ext_resource path="res://UI/textures/NietCreditButton.png" type="Texture" id=11]
+[ext_resource path="res://UI/textures/Button.png" type="Texture" id=12]
+[ext_resource path="res://UI/textures/ButtonHover.png" type="Texture" id=13]
+[ext_resource path="res://UI/textures/ButtonPressed.png" type="Texture" id=14]
+[ext_resource path="res://UI/textures/Homes.png" type="Texture" id=15]
+[ext_resource path="res://UI/textures/Ruis.png" type="Texture" id=16]
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 2
+extra_spacing_space = 2
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 32, 16 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 32, 16 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 32, 16 )
+
+[sub_resource type="Theme" id=10]
+Button/colors/font_color = Color( 0.92549, 0.92549, 0.92549, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/hover = SubResource( 8 )
+Button/styles/normal = SubResource( 9 )
+Button/styles/pressed = SubResource( 12 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 40
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 2
+extra_spacing_space = 2
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -50,6 +95,9 @@ margin_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 gameScene = ExtResource( 4 )
 
 [node name="Menu" type="Control" parent="."]
@@ -74,13 +122,14 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Menu/Keybinds"]
 margin_right = 196.0
-margin_bottom = 14.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 7 )
 text = "Key binds"
 
 [node name="movement" type="HBoxContainer" parent="Menu/Keybinds"]
-margin_top = 18.0
+margin_top = 24.0
 margin_right = 196.0
-margin_bottom = 42.0
+margin_bottom = 48.0
 
 [node name="Key" type="TextureRect" parent="Menu/Keybinds/movement"]
 margin_right = 48.0
@@ -94,15 +143,16 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="Menu/Keybinds/movement"]
 margin_left = 52.0
-margin_top = 5.0
-margin_right = 156.0
-margin_bottom = 19.0
+margin_top = 2.0
+margin_right = 186.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 7 )
 text = "move horizontal"
 
 [node name="interact" type="HBoxContainer" parent="Menu/Keybinds"]
-margin_top = 46.0
+margin_top = 52.0
 margin_right = 196.0
-margin_bottom = 70.0
+margin_bottom = 76.0
 
 [node name="Key" type="TextureRect" parent="Menu/Keybinds/interact"]
 margin_right = 48.0
@@ -113,15 +163,16 @@ stretch_mode = 1
 
 [node name="Label2" type="Label" parent="Menu/Keybinds/interact"]
 margin_left = 52.0
-margin_top = 5.0
-margin_right = 101.0
-margin_bottom = 19.0
+margin_top = 2.0
+margin_right = 120.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 7 )
 text = "interact"
 
 [node name="jump" type="HBoxContainer" parent="Menu/Keybinds"]
-margin_top = 74.0
+margin_top = 80.0
 margin_right = 196.0
-margin_bottom = 98.0
+margin_bottom = 104.0
 
 [node name="Key" type="TextureRect" parent="Menu/Keybinds/jump"]
 margin_right = 48.0
@@ -132,51 +183,58 @@ stretch_mode = 1
 
 [node name="Label2" type="Label" parent="Menu/Keybinds/jump"]
 margin_left = 52.0
-margin_top = 5.0
-margin_right = 85.0
-margin_bottom = 19.0
+margin_top = 2.0
+margin_right = 87.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 7 )
 text = "jump"
 
-[node name="Buttons" type="HBoxContainer" parent="Menu"]
+[node name="Buttons" type="Control" parent="Menu"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 18.0
 margin_top = -88.0
-margin_right = 541.0
+margin_right = 756.0
 margin_bottom = -18.0
-custom_constants/separation = 30
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PlayButton" type="Button" parent="Menu/Buttons"]
-margin_right = 210.0
+margin_right = 200.0
 margin_bottom = 70.0
-rect_min_size = Vector2( 210, 0 )
+rect_min_size = Vector2( 200, 0 )
+theme = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 text = "Play"
-icon = ExtResource( 1 )
+icon = ExtResource( 10 )
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CreditsButton" type="Button" parent="Menu/Buttons"]
 margin_left = 240.0
-margin_right = 363.0
+margin_right = 440.0
 margin_bottom = 70.0
 rect_pivot_offset = Vector2( 0, 50 )
 size_flags_horizontal = 12
 size_flags_vertical = 12
+theme = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 text = "Credits"
 icon = ExtResource( 1 )
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ExitButton" type="Button" parent="Menu/Buttons"]
-margin_left = 393.0
-margin_right = 428.0
+margin_left = 480.0
+margin_right = 680.0
 margin_bottom = 70.0
+theme = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 text = "Exit"
+icon = ExtResource( 11 )
+expand_icon = true
 
 [node name="Title" type="RichTextLabel" parent="Menu"]
 anchor_right = 1.0
@@ -184,25 +242,31 @@ margin_top = 50.0
 margin_bottom = 131.0
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[center]Bij den psychiater...[/center]"
-text = "Bij den psychiater..."
+bbcode_text = "[center]Monkey do a flip[/center]"
+text = "Monkey do a flip"
 fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Credits" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2000.0
 margin_right = 2000.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="CenterContainer" type="CenterContainer" parent="Credits"]
+[node name="CenterContainer" type="Control" parent="Credits"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Credits/CenterContainer"]
-margin_left = 312.0
-margin_top = 33.0
-margin_right = 712.0
-margin_bottom = 566.0
+margin_left = 132.0
+margin_top = 106.0
+margin_right = 532.0
+margin_bottom = 546.0
 rect_min_size = Vector2( 400, 0 )
 custom_fonts/normal_font = ExtResource( 9 )
 text = "Stein Maerivoet: 
@@ -210,14 +274,31 @@ text = "Stein Maerivoet:
   Game Design
   Sound Design
 
-Thibaut van Goethem
-  Programming Aid
-  Game Breaker (pro)
 
-Freek De Sagher:
+Thibaut van Goethem:
+  Programming Aid"
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Credits/CenterContainer"]
+margin_left = 532.0
+margin_top = 106.0
+margin_right = 932.0
+margin_bottom = 484.0
+rect_min_size = Vector2( 400, 0 )
+custom_fonts/normal_font = ExtResource( 9 )
+text = "Freek De Sagher:
   Lead programming
   Game Design
-  Graphics Aid"
+  Graphics Aid
+
+
+Axel Lennertz:
+  Visualisation
+	"
 fit_content_height = true
 scroll_active = false
 
@@ -232,8 +313,25 @@ custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
 expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Ruis" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 0, -1.52588e-05 )
+scale = Vector2( 10.1821, 10.1821 )
+texture = ExtResource( 16 )
+centered = false
+
+[node name="Homes" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+show_behind_parent = true
+position = Vector2( 512, 253 )
+scale = Vector2( 13.5761, 13.5761 )
+texture = ExtResource( 15 )
 
 [connection signal="pressed" from="Menu/Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Menu/Buttons/CreditsButton" to="." method="_on_CreditsButton_pressed"]
