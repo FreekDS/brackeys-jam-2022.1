@@ -58,6 +58,7 @@ func interact():
 			specific_message("So many possible phone numbers to dial...")
 		
 		_:
+			specific_message("So many possible phone numbers to dial...")
 			complete()
 	complete()
 

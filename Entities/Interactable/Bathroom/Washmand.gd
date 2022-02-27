@@ -44,6 +44,8 @@ func interact():
 	if towel_count >= 2:
 		specific_message("I found them all")
 		$AudioStreamPlayer2D.playing = true
+		emit_signal("action_insanity", "It MIGHT be REAL, what if it hurts?")
+		yield(get_tree().create_timer(4), "timeout")
 		StateManager.change_state(StateManager.BATHROOM.TOWELS_DEPOSITED)
 		disable()
 	
