@@ -11,6 +11,7 @@ func _ready():
 		StateManager.BATHROOM.INIT
 	]
 	disable_on = []
+	WillyAnimations.play("sleep")
 	
 
 func change_awake():
