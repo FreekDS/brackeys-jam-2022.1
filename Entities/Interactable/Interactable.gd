@@ -200,8 +200,9 @@ func _on_mouse_over():
 func _on_mouse_exit(update=true):
 	if mouse_in and detected and not is_paused and enabled:
 		play_anim(true)
-	if not mouse_in and detected and not enabled and  is_paused and not prev_enabled:
-		play_anim(true) 
+	if not mouse_in and detected and not enabled and is_paused and not prev_enabled:
+		if can_be_clicked:
+			play_anim(true) 
 	if update:
 		mouse_in = false
 
@@ -267,6 +268,9 @@ func enable():
 func disable():
 	enabled = false
 	prev_enabled = false
+	
+	if mouse_in or can_be_clicked:
+		_on_mouse_exit()
 
 # Pause the interactable
 func pause():

@@ -8,7 +8,9 @@ func _ready():
 	enable_on = [
 		StateManager.GARAGE.PICKED_UP_PHONE
 	]
-	disable_on = []
+	disable_on = [
+		StateManager.GARAGE.DIARY_OPENED
+	]
 
 func interact():
 	if not enabled or not can_be_clicked:

@@ -5,8 +5,8 @@ signal transitioned_to(level, state)
 signal level_changed(level)
 
 func _ready():
-	current_level = LEVELS.BATHROOM
-	current_state = LIVING.INIT
+	current_level = LEVELS.GARAGE
+	current_state = GARAGE.INIT
 
 
 func notify():
