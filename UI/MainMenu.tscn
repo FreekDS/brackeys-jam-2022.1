@@ -242,12 +242,9 @@ margin_top = 50.0
 margin_bottom = 131.0
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[center]Monkey do a flip[/center]"
-text = "Monkey do a flip"
+bbcode_text = "[center]Shortcircuited[/center]"
+text = "Shortcircuited"
 fit_content_height = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Credits" type="Control" parent="."]
 anchor_right = 1.0

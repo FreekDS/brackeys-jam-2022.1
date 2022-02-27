@@ -188,9 +188,6 @@ margin_top = -7.0
 margin_right = 18.0
 margin_bottom = 8.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Ah de rik se" parent="Screen" index="1" instance=ExtResource( 4 )]
 visible = false
@@ -230,3 +227,4 @@ stream = ExtResource( 7 )
 
 [node name="Dansen" type="AudioStreamPlayer2D" parent="." index="8"]
 stream = ExtResource( 8 )
+volume_db = -10.0
