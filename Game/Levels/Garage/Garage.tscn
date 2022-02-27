@@ -410,9 +410,11 @@ environment = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 23 )
+volume_db = -5.0
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
+volume_db = -5.0
 
 [connection signal="action_end_level" from="Game/InteractablesBack/Plongkas" to="Game" method="_on_Plongkas_action_end_level"]
 [connection signal="finished" from="Game/InsanityLayer/InsanityStateDisplay" to="Game/Player" method="_on_InsanityStateDisplay_finished"]

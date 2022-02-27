@@ -46,6 +46,8 @@ func interact():
 			yield(get_tree().create_timer(4), "timeout")
 			emit_signal("action_end_level")
 		_: # default
-			emit_signal("action_message", round_robin_message(messages[StateManager.insanity_level]))
-	
+			Text.set_content("*blub*")
+			Text.play_text()
+			yield(Text, "completed")
+
 	complete()

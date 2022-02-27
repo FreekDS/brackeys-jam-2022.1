@@ -17,7 +17,7 @@ func _ready():
 	disable_on = [
 
 	]
-	modulate = Color(2,2,2)
+	modulate = Color(1.3, 1.3, 1.3)
 
 
 func interact():
@@ -59,7 +59,7 @@ func turn_on():
 		$Dansen.playing = true
 	TVAnimations.play("turn_on")
 	active = true
-	modulate = Color(2,2,2)
+	modulate = Color(1.3,1.3,1.3)
 		
 func _on_gameState_change(_level, state):
 	._on_gameState_change(_level, state)
