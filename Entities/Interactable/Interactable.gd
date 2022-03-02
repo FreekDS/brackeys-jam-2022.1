@@ -3,6 +3,7 @@ extends Node2D
 class_name Interactable
 
 onready var animations = $AnimationPlayer
+onready var InteractSprite = $Sprite
 
 
 """
@@ -191,20 +192,15 @@ func _ready():
 
 # Show outline if allowed
 func _on_mouse_over():
-
-	if detected and enabled:
+	if detected and enabled and not mouse_in:
 		play_anim()
 	mouse_in = true
 
 # Remove outline if required
 func _on_mouse_exit(update=true):
-	if mouse_in and detected and not is_paused and enabled:
+	if mouse_in and enabled and detected:
 		play_anim(true)
-	if not mouse_in and detected and not enabled and is_paused and not prev_enabled:
-		if can_be_clicked:
-			play_anim(true) 
-	if update:
-		mouse_in = false
+	mouse_in = false
 
 # Plays the outline animation
 func play_anim(back = false):
@@ -223,8 +219,11 @@ func check_in_range(source_pos: Vector2):
 	
 	var dist = source_pos.distance_to(self.global_position)
 	detected = dist <= detection_radius
+	
+	
 	if not detected and can_be_clicked:
-		play_anim(true)
+		InteractSprite.material.set_shader_param("thickness", 0)
+		can_be_clicked = false
 	if detected and mouse_in and not can_be_clicked:
 		play_anim()
 		
@@ -275,19 +274,20 @@ func disable():
 # Pause the interactable
 func pause():
 	if not is_paused:
+		if enabled and can_be_clicked:
+			play_anim(true)
 		prev_enabled = enabled
 		enabled = false
 		is_paused = true
 		mouse_was_in = mouse_in
-		_on_mouse_exit(false)
 
 # Resume the interactable
 func unpause():
 	if is_paused:
 		enabled = prev_enabled
-		_on_mouse_exit(false)
 		is_paused = false
-		if enabled and mouse_was_in and not mouse_in:
+		if enabled and mouse_was_in and mouse_in:
 			mouse_was_in = false
+			play_anim()
 		
 			
