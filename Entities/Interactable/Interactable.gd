@@ -197,7 +197,7 @@ func _on_mouse_over():
 	mouse_in = true
 
 # Remove outline if required
-func _on_mouse_exit(update=true):
+func _on_mouse_exit():
 	if mouse_in and enabled and detected:
 		play_anim(true)
 	mouse_in = false
